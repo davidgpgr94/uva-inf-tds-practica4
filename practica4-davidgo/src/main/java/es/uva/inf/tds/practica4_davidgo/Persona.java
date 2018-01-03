@@ -12,10 +12,11 @@ public class Persona {
 	 * @param nombre, nombre de la persona
 	 * 
 	 * @pre.condition {@code nombre != null}
+	 * @pre.condition {@code nombre != ""}
 	 * @post.condition {@code nombre == this.getNombre()}
 	 * @post.condition {@code null == this.getConocidos()}
 	 * @post.condition {@code null == this.getAmigos()}
-	 * @throws IllegalArgumentException si {@code nombre == null} 
+	 * @throws IllegalArgumentException si {@code nombre == null || nombre == ""} 
 	 */
 	public Persona(String nombre) {
 		// TODO Auto-generated constructor stub
@@ -28,6 +29,7 @@ public class Persona {
 	 * @param conocidos, array de Persona que representa los conocidos de this
 	 * 
 	 * @pre.condition {@code nombre != null}
+	 * @pre.condition {@code nombre != ""}
 	 * @pre.condition {@code conocidos != null}
 	 * @pre.condition {@code conocidos.length > 0}
 	 * @pre.condition {@code conocidos[i] != null} para todo i desde 0 hasta conocidos.length-1

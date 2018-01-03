@@ -26,5 +26,27 @@ public class PersonaTDDTest {
 		assertArrayEquals(conocidos, p.getConocidos());
 		assertEquals("Pepe", p.getNombre());
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDConstructorConNombreNulo() {
+		Persona p = new Persona(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDConstructorConNombreVacio() {
+		Persona p = new Persona("");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDConstructorConListaConocidosVacia() {
+		Persona[] conocidos = {};
+		Persona p = new Persona("Pepe", conocidos);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDConstructorConConocidosNulos() {
+		Persona[] conocidos = {null, null};
+		Persona p = new Persona("Pepe", conocidos);
+	}
 
 }
