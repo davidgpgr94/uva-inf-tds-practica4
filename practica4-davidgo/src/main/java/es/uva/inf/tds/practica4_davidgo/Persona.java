@@ -56,4 +56,10 @@ public class Persona {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+
+	public void serAmigoDe(Persona p1) {
+		// TODO Auto-generated method stub
+		
+	}
 }
