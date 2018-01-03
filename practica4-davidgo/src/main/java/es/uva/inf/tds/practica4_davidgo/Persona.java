@@ -57,8 +57,19 @@ public class Persona {
 		return null;
 	}
 	
+	/**
+	 * Añade a la lista de amigos a un conocido
+	 * 
+	 * @param conocido, el conocido al que se quiere hacer amigo
+	 * 
+	 * @pre.condition {@code conocido != null}
+	 * @pre.condition {@code esConocido(conocido)}
+	 * @post.condition {@code esAmigo(conocido)}
+	 * @throws IllegalArgumentException si {@code conocido == null}
+	 * @throws IllegalStateException si {@code !esConocido(conocido)}
+	 */
 
-	public void serAmigoDe(Persona p1) {
+	public void serAmigoDe(Persona conocido) {
 		// TODO Auto-generated method stub
 		
 	}
