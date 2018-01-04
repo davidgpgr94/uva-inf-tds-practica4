@@ -95,7 +95,19 @@ public class Persona {
 		return false;
 	}
 
-	public boolean esAmigo(Persona p2) {
+	/**
+	 * Devuelve si otro es un amigo de this o no.
+	 * Se considera amigo solamente aquellos en la lista de amigos.
+	 * 
+	 * @param otro
+	 * 
+	 * @pre.condition {@code otro != null}
+	 * @pre.condition {@code otro != this}
+	 * @throws IllegalArgumentException cuando no se cumple alguna precondición
+	 * 
+	 * @return true si otro es un amigo de this. False en caso contrario
+	 */
+	public boolean esAmigo(Persona otro) {
 		// TODO Auto-generated method stub
 		return false;
 	}
