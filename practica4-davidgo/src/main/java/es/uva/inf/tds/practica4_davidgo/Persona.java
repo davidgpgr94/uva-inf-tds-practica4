@@ -77,4 +77,10 @@ public class Persona {
 		
 	}
 
+	
+	public boolean esConocido(Persona otro) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
