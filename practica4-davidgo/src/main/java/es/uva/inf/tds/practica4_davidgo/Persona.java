@@ -95,4 +95,9 @@ public class Persona {
 		return false;
 	}
 
+	public boolean esAmigo(Persona p2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
