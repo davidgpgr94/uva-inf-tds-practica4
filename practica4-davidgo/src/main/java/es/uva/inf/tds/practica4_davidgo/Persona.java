@@ -72,9 +72,9 @@ public class Persona {
 	 * @throws IllegalStateException si {@code !esConocido(conocido)}
 	 * @throws IllegalStateException si {@code esAmigo(conocido)}
 	 */
-
 	public void serAmigoDe(Persona conocido) {
 		// TODO Auto-generated method stub
 		
 	}
+
 }
