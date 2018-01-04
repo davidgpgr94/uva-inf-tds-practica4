@@ -112,6 +112,19 @@ public class Persona {
 		return false;
 	}
 	
+	/**
+	 * Añade  ala lista de conocidos a una Persona
+	 *
+	 * @param nuevoConocido, array de Persona que son los nuevos conocidos de this
+	 * 
+	 * @pre.condition {@code nuevoConocido[i] != null} para todo  i desde 0 hasta nuevoConocido.length-1
+	 * @pre.condition {@code nuevoConocido[i] != this} para todo  i desde 0 hasta nuevoConocido.length-1
+	 * @pre.condition {@code !esConocido(nuevoConocido[i])} para todo  i desde 0 hasta nuevoConocido.length-1
+	 * @post.condition {@code esConocido(nuevoConocido[i])} para todo  i desde 0 hasta nuevoConocido.length-1
+	 * @throws IllegalArgumentException si {@code nuevoConocido[i] == null} para algún  i desde 0 hasta nuevoConocido.length-1
+	 * @throws IllegalArgumentException si {@code nuevoConocido[i] == this} para algún  i desde 0 hasta nuevoConocido.length-1
+	 * @throws IllegalStateException si {@code esConocido(nuevoConocido[i])} para algún  i desde 0 hasta nuevoConocido.length-1
+	 */
 
 	public void conocerA(Persona[] nuevoConocido) {
 		// TODO Auto-generated method stub
