@@ -72,4 +72,21 @@ public class PersonaTDDTest {
 		Persona p2 = null;
 		p.serAmigoDe(p2);
 	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDSerAmigoDeUnAmigo() {
+		Persona p1 = new Persona("a");
+		Persona[] conocidos = {p1};
+		Persona p2 = new Persona("b", conocidos);
+		p2.serAmigoDe(p1);
+		p2.serAmigoDe(p1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDSerAmigoDeSiMismo() {
+		Persona p1 = new Persona("a");
+		Persona[] conocidos = {p1};
+		Persona p2 = new Persona("b", conocidos);
+		p2.serAmigoDe(p2);
+	}
 }

@@ -63,10 +63,14 @@ public class Persona {
 	 * @param conocido, el conocido al que se quiere hacer amigo
 	 * 
 	 * @pre.condition {@code conocido != null}
+	 * @pre.condition {@code conocido != this}
 	 * @pre.condition {@code esConocido(conocido)}
+	 * @pre.condition {@code !esAmigo(conocido)}
 	 * @post.condition {@code esAmigo(conocido)}
 	 * @throws IllegalArgumentException si {@code conocido == null}
+	 * @throws IllegalArgumentException si {@code conocido == this}
 	 * @throws IllegalStateException si {@code !esConocido(conocido)}
+	 * @throws IllegalStateException si {@code esAmigo(conocido)}
 	 */
 
 	public void serAmigoDe(Persona conocido) {
