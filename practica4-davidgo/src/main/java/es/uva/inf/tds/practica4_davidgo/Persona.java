@@ -80,6 +80,7 @@ public class Persona {
 	
 	/**
 	 * Devuelve si otro es un conocido de this o no
+	 * Se considera conocido aquellos en la lista de conocidos, y a los de la lista de amigos
 	 * 
 	 * @param otro
 	 * 
