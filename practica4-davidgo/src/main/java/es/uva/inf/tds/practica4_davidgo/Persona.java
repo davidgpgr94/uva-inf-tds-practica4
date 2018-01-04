@@ -111,5 +111,11 @@ public class Persona {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+
+	public void conocerA(Persona[] nuevoConocido) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
