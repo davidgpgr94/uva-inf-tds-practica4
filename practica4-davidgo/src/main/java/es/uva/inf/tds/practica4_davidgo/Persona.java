@@ -78,6 +78,17 @@ public class Persona {
 	}
 
 	
+	/**
+	 * Devuelve si otro es un conocido de this o no
+	 * 
+	 * @param otro
+	 * 
+	 * @pre.condition {@code otro != null}
+	 * @pre.condition {@code otro != this}
+	 * @throws IllegalArgumentException cuando no se cumple alguna precondición
+	 * 
+	 * @return true si otro es un conocido de this. False en caso contrario
+	 */
 	public boolean esConocido(Persona otro) {
 		// TODO Auto-generated method stub
 		return false;
