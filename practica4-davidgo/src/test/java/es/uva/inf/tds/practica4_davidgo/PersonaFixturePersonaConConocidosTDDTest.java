@@ -20,8 +20,24 @@ public class PersonaFixturePersonaConConocidosTDDTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testTDDEsConocidoTrue() {
+		assertTrue(p1.esConocido(p2));
+	}
+	
+	@Test
+	public void testTDDEsConocidoFalse() {
+		Persona p4 = new Persona("d");
+		assertFalse(p1.esConocido(p4));
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDEsConocidoUnoMismo() {
+		boolean res = p1.esConocido(p1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDEsConocidoArgumentoNull() {
+		boolean res = p1.esConocido(null);
+	}
+	
 }
