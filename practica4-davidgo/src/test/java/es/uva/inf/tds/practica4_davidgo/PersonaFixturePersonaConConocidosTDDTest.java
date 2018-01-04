@@ -34,11 +34,13 @@ public class PersonaFixturePersonaConConocidosTDDTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testTDDEsConocidoUnoMismo() {
+		@SuppressWarnings("unused")
 		boolean res = p1.esConocido(p1);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testTDDEsConocidoArgumentoNull() {
+		@SuppressWarnings("unused")
 		boolean res = p1.esConocido(null);
 	}
 	
