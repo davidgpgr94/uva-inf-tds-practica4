@@ -27,5 +27,32 @@ public class PersonaFixturePersonaConConocidosYAmigosTDDTest {
 		assertTrue(p1.esConocido(p2));
 	}
 	
+	@Test
+	public void testTDDEsAmigoTrue() {
+		assertTrue(p1.esAmigo(p2));
+	}
 
+	@Test
+	public void testTDDEsAmigoFalse() {
+		assertFalse(p1.esAmigo(p3));
+	}
+	
+	@Test
+	public void testTDDEsAmigoFalseNiConocido() {
+		Persona p4 = new Persona("d");
+		assertFalse(p1.esAmigo(p4));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDEsAmigoUnoMismo() {
+		@SuppressWarnings("unused")
+		boolean res = p1.esAmigo(p1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDEsAmigoArgumentoNull() {
+		@SuppressWarnings("unused")
+		boolean res = p1.esAmigo(null);
+	}
+	
 }
