@@ -26,12 +26,14 @@ public class PersonaCajaNegraTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testCajaNegraConstructorDosArgumentosNombreValidoPrimerConocidoNuloDemasNoNulos() {
 		Persona[] conocidos = {null, new Persona("a"), new Persona("b")};
+		@SuppressWarnings("unused")
 		Persona p = new Persona("c", conocidos);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testCajaNegraConstructorDosArgumentosNombreValidoUltimoConocidoNuloDemasNoNulos() {
 		Persona[] conocidos = {new Persona("a"), new Persona("b"), null};
+		@SuppressWarnings("unused")
 		Persona p = new Persona("c", conocidos);
 	}
 	

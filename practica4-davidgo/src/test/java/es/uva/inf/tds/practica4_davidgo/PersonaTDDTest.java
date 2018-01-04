@@ -29,23 +29,27 @@ public class PersonaTDDTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testTDDConstructorConNombreNulo() {
+		@SuppressWarnings("unused")
 		Persona p = new Persona(null);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testTDDConstructorConNombreVacio() {
+		@SuppressWarnings("unused")
 		Persona p = new Persona("");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testTDDConstructorConListaConocidosVacia() {
 		Persona[] conocidos = {};
+		@SuppressWarnings("unused")
 		Persona p = new Persona("Pepe", conocidos);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testTDDConstructorConConocidosNulos() {
 		Persona[] conocidos = {null, null};
+		@SuppressWarnings("unused")
 		Persona p = new Persona("Pepe", conocidos);
 	}
 
