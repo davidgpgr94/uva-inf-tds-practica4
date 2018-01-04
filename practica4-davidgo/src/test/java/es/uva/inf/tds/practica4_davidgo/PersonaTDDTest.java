@@ -93,4 +93,36 @@ public class PersonaTDDTest {
 		Persona p2 = new Persona("b", conocidos);
 		p2.serAmigoDe(p2);
 	}
+
+	@Test
+	public void testTDDConocerA() {
+		Persona p1 = new Persona("a");
+		Persona p2 = new Persona("b");
+		Persona[] nuevoConocido = {p2};
+		p1.conocerA(nuevoConocido);
+		assertArrayEquals(nuevoConocido, p1.getConocidos());
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDConocerAYaEsConocido() {
+		Persona p2 = new Persona("b");
+		Persona[] conocidos = {p2};
+		Persona p1 = new Persona("a", conocidos);
+		p1.conocerA(conocidos);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDConocerAUnoMismo() {
+		Persona p1 = new Persona("a");
+		Persona[] nConocidos = {p1};
+		p1.conocerA(nConocidos);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDConocerAalgunoEsNull() {
+		Persona p1 = new Persona("a");
+		Persona p2 = new Persona("b");
+		Persona[] nConocidos = {p2, null};
+		p1.conocerA(nConocidos);
+	}
 }
