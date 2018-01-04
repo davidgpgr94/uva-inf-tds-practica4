@@ -13,7 +13,7 @@ public class PersonaFixturePersonaConConocidosYAmigosTDDTest {
 	@Before
 	public void setUp() throws Exception {
 		//p1 considera amigo a p2
-		//p1 considera conocido a p3
+		//p1 considera conocido a p2 y p3
 		p2 = new Persona("b");
 		p3 = new Persona("c");
 		Persona[] aux = {p2, p3};
@@ -23,8 +23,9 @@ public class PersonaFixturePersonaConConocidosYAmigosTDDTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testTDDEsConocidoSiendoAmigo() {
+		assertTrue(p1.esConocido(p2));
 	}
+	
 
 }
