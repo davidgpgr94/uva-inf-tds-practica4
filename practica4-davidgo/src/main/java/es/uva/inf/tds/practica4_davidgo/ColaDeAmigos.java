@@ -38,6 +38,14 @@ public class ColaDeAmigos {
 		
 	}
 
+	/**
+	 * Muestra la siguiente Persona en ser atendida
+	 * 
+	 * @return la siguiente Persona que será atendida
+	 * 
+	 * @pre.condition {@code haySiguiente()}
+	 * @throws IllegalStateException si {@code !haySiguiente()}
+	 */
 	public Persona siguiente() {
 		// TODO Auto-generated method stub
 		return null;
