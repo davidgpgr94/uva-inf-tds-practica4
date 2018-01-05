@@ -5,6 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * 
+ * @author davidgo
+ *
+ */
 public class PersonaFixturePersonaConConocidosYAmigosTDDTest {
 
 	private Persona p1, p2, p3;
