@@ -14,8 +14,8 @@ public class PersonaTDDTest {
 	@Test
 	public void testTDDConstructorPersona() {
 		Persona p = new Persona("Pepe");
-		assertArrayEquals(null, p.getAmigos());
-		assertArrayEquals(null, p.getConocidos());
+		assertNull(p.getAmigos());
+		assertNull(p.getConocidos());
 		assertEquals("Pepe", p.getNombre());
 	}
 
