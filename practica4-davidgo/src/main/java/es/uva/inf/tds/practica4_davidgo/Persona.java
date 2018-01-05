@@ -155,4 +155,10 @@ public class Persona {
 
 	}
 
+	
+	public void dejarSerAmigoDe(Persona p2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
