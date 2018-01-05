@@ -20,6 +20,8 @@ public class ColaDeAmigosTDDTest {
 	public void testTDDConstructorColaDeAmigos() {
 		ColaDeAmigos c = new ColaDeAmigos();
 		assertNotNull(c);
+		fail("Obligado a fallar");
+		//TODO repasar una vez implementada la clase ColaDeAmigos
 	}
 
 }
