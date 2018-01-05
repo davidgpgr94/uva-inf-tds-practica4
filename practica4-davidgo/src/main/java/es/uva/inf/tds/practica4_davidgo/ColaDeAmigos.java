@@ -43,7 +43,21 @@ public class ColaDeAmigos {
 		return null;
 	}
 
-	public void colarA(Persona p2) {
+	/**
+	 * Coloca a colado delante del primer reservador, el cual considere amigo al colado.
+	 * 
+	 * @param colado, Persona que va a ser colada
+	 * 
+	 * @pre.condition {@code colado != null}
+	 * @pre.condition {@code !esReservador(colado)}
+	 * @pre.condition {@code puedeColarse(colado)}
+	 * @post.condition {@code estaEnCola(colado)}
+	 * @post.condition {@code cuantosPuedeColar(reservador_de_colado) == @pre.cuantosPuedeColar(reservador_de_colado)-1}
+	 * @throws IllegalArgumentException si {@code colado == null}
+	 * @throws IllegalStateException si {@code esReservador(colado)}
+	 * @throws IllegalStateException si {@code !puedeColarse(colado)} 
+	 */
+	public void colarA(Persona colado) {
 		// TODO Auto-generated method stub
 		
 	}
