@@ -29,8 +29,14 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColado {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testTDDsiguiente() {
+		assertEquals(p2, cola.siguiente());
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDsiguienteNoHayNadieEnLaCola() {
+		cola = new ColaDeAmigos();
+		cola.siguiente();
 	}
 
 }
