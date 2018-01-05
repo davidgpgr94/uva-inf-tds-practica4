@@ -32,7 +32,7 @@ public class ColaDeAmigosTDDTest {
 	public void testTDDpedirVezPersonaNull() {
 		Persona p1 = null;
 		ColaDeAmigos c = new ColaDeAmigos();
-		c.pedriVez(p1, 0);
+		c.pedirVez(p1, 0);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
