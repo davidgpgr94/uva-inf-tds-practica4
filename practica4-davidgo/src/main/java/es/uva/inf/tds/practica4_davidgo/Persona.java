@@ -156,7 +156,19 @@ public class Persona {
 	}
 
 	
-	public void dejarSerAmigoDe(Persona p2) {
+	/**
+	 * Elimina a exAmigo de la lista de amigos y lo deja como conocido.
+	 * 
+	 * @param exAmigo, Persona que dejará de ser amigo de this
+	 * 
+	 * @pre.condition {@code exAmigo != null}
+	 * @pre.condition {@code exAmigo != this}
+	 * @pre.condition {@code esAmigo(exAmigo)}
+	 * @post.condition {@code !esAmigo(exAmigo) && esConocido(exAmigo)}
+	 * @throws IllegalArgumentException si {@code exAmigo == null || exAmigo == this}
+	 * @throws IllegalStateException si {@code !esAmigo(exAmigo)}
+	 */
+	public void dejarSerAmigoDe(Persona exAmigo) {
 		// TODO Auto-generated method stub
 		
 	}
