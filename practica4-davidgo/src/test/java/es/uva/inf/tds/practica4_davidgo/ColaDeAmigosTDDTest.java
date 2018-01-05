@@ -12,10 +12,6 @@ import org.junit.Test;
  */
 public class ColaDeAmigosTDDTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
 	@Test
 	public void testTDDConstructorColaDeAmigos() {
 		ColaDeAmigos c = new ColaDeAmigos();
