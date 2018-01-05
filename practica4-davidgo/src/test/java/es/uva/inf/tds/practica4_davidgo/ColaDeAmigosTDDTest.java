@@ -5,6 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * 
+ * @author davidgo
+ *
+ */
 public class ColaDeAmigosTDDTest {
 
 	@Before
@@ -12,8 +17,9 @@ public class ColaDeAmigosTDDTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testTDDConstructorColaDeAmigos() {
+		ColaDeAmigos c = new ColaDeAmigos();
+		assertNotNull(c);
 	}
 
 }
