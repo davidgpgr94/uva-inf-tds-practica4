@@ -15,4 +15,19 @@ public class ColaDeAmigos {
 	public ColaDeAmigos() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public void pedirVez(Persona p1, int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Persona siguiente() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void colarA(Persona p2) {
+		// TODO Auto-generated method stub
+		
+	}
 }
