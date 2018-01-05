@@ -59,4 +59,31 @@ public class PersonaFixturePersonaConConocidosYAmigosTDDTest {
 		boolean res = p1.esAmigo(null);
 	}
 	
+	@Test
+	public void testTDDDejarSerAmigoDe() {
+		p1.dejarSerAmigoDe(p2);
+		assertNull(p1.getAmigos());
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDDejarSerAmigoDeUnConocidoNoAmigo() {
+		p1.dejarSerAmigoDe(p3);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDDejarSerAmigoDeNiAmigoNiConocido() {
+		Persona p4 = new Persona("d");
+		p1.dejarSerAmigoDe(p4);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDDejarSerAmigoDeNull() {
+		p1.dejarSerAmigoDe(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDDejarSerAmigoDeUnoMismo() {
+		p1.dejarSerAmigoDe(p1);
+	}
+	
 }
