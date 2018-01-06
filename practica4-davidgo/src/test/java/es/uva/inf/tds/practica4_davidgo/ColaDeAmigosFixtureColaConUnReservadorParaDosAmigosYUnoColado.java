@@ -48,6 +48,8 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColado {
 	public void testTDDhaySiguienteFalse() {
 		cola = new ColaDeAmigos();
 		assertFalse(cola.haySiguiente());
+		fail("Obligado a fallar");
+		//TODO repasar una vez implementada la clase ColaDeAmigos
 	}
 	
 }

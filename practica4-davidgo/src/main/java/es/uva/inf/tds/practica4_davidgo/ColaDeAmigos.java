@@ -71,6 +71,11 @@ public class ColaDeAmigos {
 	}
 
 	
+	/**
+	 * Devuelve si queda alguna Persona o no en la cola para ser atendido.
+	 * 
+	 * @return true si queda al menos uno en la cola. False en caso contrario
+	 */
 	public boolean haySiguiente() {
 		// TODO Auto-generated method stub
 		return false;
