@@ -169,6 +169,13 @@ public class ColaDeAmigos {
 		return 0;
 	}
 
+	/**
+	 * Atiende al siguiente de la cola. Para ello, lo elimina de la cola.
+	 * 
+	 * @pre.condition {@code haySiguiente()}
+	 * @post.condition {@code !estaEnCola(@pre.siguiente())}
+	 * @throws IllegalStateException si {@code !haySiguiente()}
+	 */
 	public void atender() {
 		// TODO Auto-generated method stub
 		
