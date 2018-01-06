@@ -168,4 +168,9 @@ public class ColaDeAmigos {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	public void atender() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -130,7 +130,7 @@ public class ColaDeAmigosTDDTest {
 	@Test(expected = IllegalStateException.class)
 	public void testTDDatenderNoQuedaNadie() {
 		ColaDeAmigos cola = new ColaDeAmigos();
-		cola.atendedr();
+		cola.atender();
 	}
 	
 }
