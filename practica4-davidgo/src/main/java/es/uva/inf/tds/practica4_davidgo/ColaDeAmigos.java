@@ -180,4 +180,9 @@ public class ColaDeAmigos {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Persona[] coladosPor(Persona p1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
