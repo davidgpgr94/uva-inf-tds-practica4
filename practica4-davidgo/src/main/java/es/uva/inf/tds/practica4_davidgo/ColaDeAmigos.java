@@ -149,7 +149,22 @@ public class ColaDeAmigos {
 		return 0;
 	}
 
-	public int numeroAmigosReservados(Persona p1) {
+	/**
+	 * Devuelve el número de amigos para los que pidió vez reservador
+	 * 
+	 * @param reservador
+	 * 
+	 * @pre.condition {@code reservador != null}
+	 * @pre.condition {@code estaEnCola(reservador)}
+	 * @pre.condition {@code esReservador(reservador)}
+	 * @post.condition {@code nAmigos >= 0 && nAmigos <= 10}
+	 * @throws IllegalArgumentException si {@coded reservador == null}
+	 * @throws IllegalStateException si {@code !estaEnCola(reservador)}
+	 * @throws IllegalStateException si {@code !esReservador(reservador)}
+	 * 
+	 * @return nAmigos, número de amigos para los que pidió vez
+	 */
+	public int numeroAmigosReservados(Persona reservador) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
