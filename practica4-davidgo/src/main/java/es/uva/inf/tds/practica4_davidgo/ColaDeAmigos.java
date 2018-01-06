@@ -181,7 +181,24 @@ public class ColaDeAmigos {
 		
 	}
 
-	public Persona[] coladosPor(Persona p1) {
+	/**
+	 * Devuelve las personas que aún están en la cola y que han sido coladas por reservador
+	 * 
+	 * @param reservador, Persona de la que se quiere saber a quiénes ha colado
+	 * 
+	 * @pre.condition {@code reservador != null}
+	 * @pre.condition {@code estaEnCola(reservador)}
+	 * @pre.condition {@code esReservador(reservador)}
+	 * @throws IllegalArgumentException si {@code reservador == null}
+	 * @throws IllegalStateException si {@code !estaEnCola(reservador)}
+	 * @throws IllegalStateException si {@code !esReservador(reservador)}
+	 * 
+	 * @return array de Persona que representa las personas a las que ha colado
+	 *         reservador y que aún siguen en la cola. Si no ha colado a nadie,
+	 *         o no queda nadie en la cola a quien haya colado, entonces
+	 *         devuelve un array vacio
+	 */
+	public Persona[] coladosPor(Persona reservador) {
 		// TODO Auto-generated method stub
 		return null;
 	}
