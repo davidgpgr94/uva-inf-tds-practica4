@@ -110,4 +110,9 @@ public class ColaDeAmigos {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public boolean puedeColarse(Persona p2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

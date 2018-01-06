@@ -44,6 +44,7 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaUnAmigoYNingunoColado {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testTDDpuedeColarseNull() {
+		@SuppressWarnings("unused")
 		boolean res = cola.puedeColarse(null);
 	}
 
