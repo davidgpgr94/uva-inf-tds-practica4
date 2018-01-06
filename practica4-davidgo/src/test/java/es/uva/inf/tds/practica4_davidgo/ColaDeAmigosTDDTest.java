@@ -117,4 +117,20 @@ public class ColaDeAmigosTDDTest {
 		c.colarA(p2);
 		c.colarA(p3);
 	}
+
+	@Test
+	public void testTDDatender() {
+		Persona p1 = new Persona("a");
+		ColaDeAmigos cola = new ColaDeAmigos();
+		cola.pedirVez(p1, 0);
+		cola.atender();
+		assertFalse(cola.estaEnCola(p1));
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDatenderNoQuedaNadie() {
+		ColaDeAmigos cola = new ColaDeAmigos();
+		cola.atendedr();
+	}
+	
 }
