@@ -48,4 +48,28 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaUnAmigoYNingunoColado {
 		boolean res = cola.puedeColarse(null);
 	}
 
+	@Test
+	public void testTDDcuantosPuedeColar() {
+		assertEquals(1, cola.cuantosPuedeColar(p1));
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDcuantosPuedeColarAlguienQueNoEsReservador() {
+		cola.colarA(p2);
+		@SuppressWarnings("unused")
+		int res = cola.cuantosPuedeColar(p2);
+	}
+
+	@Test(expected = IllegalStateException.class)
+	public void testTDDcuantosPuededColarAlguienQueNoEstaEnCola() {
+		@SuppressWarnings("unused")
+		int res = cola.cuantosPuedeColar(p2);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDcuantosPuedeColarNull() {
+		@SuppressWarnings("unused")
+		int res = cola.cuantosPuedeColar(null);
+	}
+	
 }
