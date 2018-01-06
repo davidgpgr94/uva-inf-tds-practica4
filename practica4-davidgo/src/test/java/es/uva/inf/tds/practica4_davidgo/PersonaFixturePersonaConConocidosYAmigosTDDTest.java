@@ -67,7 +67,8 @@ public class PersonaFixturePersonaConConocidosYAmigosTDDTest {
 	@Test
 	public void testTDDDejarSerAmigoDe() {
 		p1.dejarSerAmigoDe(p2);
-		assertNull(p1.getAmigos());
+		Persona[] exp = {};
+		assertArrayEquals(exp, p1.getAmigos());
 		assertArrayEquals(conocidos, p1.getConocidos());
 	}
 	

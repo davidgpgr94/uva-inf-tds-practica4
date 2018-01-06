@@ -14,8 +14,9 @@ public class PersonaCajaNegraTest {
 	@Test
 	public void testCajaNegraConstructorUnParametroNombreUnaLetra() {
 		Persona p = new Persona("a");
-		assertNull(p.getAmigos());
-		assertNull(p.getConocidos());
+		Persona[] exp = {};
+		assertArrayEquals(exp, p.getAmigos());
+		assertArrayEquals(exp, p.getConocidos());
 		assertEquals("a", p.getNombre());
 	}
 	
@@ -23,7 +24,8 @@ public class PersonaCajaNegraTest {
 	public void testCajaNegraConstructorDosParametrosNombreUnaLetraUnConocido() {
 		Persona[] conocidos = {new Persona("a")};
 		Persona p = new Persona("b", conocidos);
-		assertNull(p.getAmigos());
+		Persona[] expAmigos = {};
+		assertArrayEquals(expAmigos, p.getAmigos());
 		assertArrayEquals(conocidos, p.getConocidos());
 		assertEquals("b", p.getNombre());
 	}
