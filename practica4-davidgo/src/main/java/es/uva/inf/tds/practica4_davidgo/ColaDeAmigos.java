@@ -80,4 +80,10 @@ public class ColaDeAmigos {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
+	public boolean esReservador(Persona p1) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
