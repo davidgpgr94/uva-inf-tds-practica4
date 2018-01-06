@@ -72,8 +72,7 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColado {
 	
 	@Test(expected = IllegalStateException.class)
 	public void testTDDesReservadorNoEstaEnCola() {
-		Persona p4 = new Persona("d");
 		@SuppressWarnings("unused")
-		boolean res = cola.esReservador(p4);
+		boolean res = cola.esReservador(p3);
 	}
 }
