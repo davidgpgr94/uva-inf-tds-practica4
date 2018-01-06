@@ -97,7 +97,16 @@ public class ColaDeAmigos {
 	}
 
 	
-	public boolean estaEnCola(Persona p1) {
+	/**
+	 * Devuelve si persona esta en la cola o no
+	 * 
+	 * @param persona, Persona de la que se quiere saber si esta en la cola o no
+	 * @return true si persona está en la cola. False en caso contrario
+	 * 
+	 * @pre.condition {@code persona != null}
+	 * @throws IllegalArgumentException si {@code persona == null}
+	 */
+	public boolean estaEnCola(Persona persona) {
 		// TODO Auto-generated method stub
 		return false;
 	}

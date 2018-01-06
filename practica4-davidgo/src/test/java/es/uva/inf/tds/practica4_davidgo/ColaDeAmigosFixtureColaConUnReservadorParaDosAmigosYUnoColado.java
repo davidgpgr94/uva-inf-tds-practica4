@@ -91,6 +91,7 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColado {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testTDDestaEnColaNull() {
+		@SuppressWarnings("unused")
 		boolean res = cola.estaEnCola(null);
 	}
 
