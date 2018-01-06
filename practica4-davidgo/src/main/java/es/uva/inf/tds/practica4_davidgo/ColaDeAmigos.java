@@ -69,4 +69,10 @@ public class ColaDeAmigos {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
+	public boolean haySiguiente() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
