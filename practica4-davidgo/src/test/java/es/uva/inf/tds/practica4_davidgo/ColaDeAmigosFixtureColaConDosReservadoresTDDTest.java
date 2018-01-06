@@ -35,8 +35,27 @@ public class ColaDeAmigosFixtureColaConDosReservadoresTDDTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testTDDnumeroAmigosReservados() {
+		assertEquals(2, cola.numeroAmigosReservados(p1));
+		assertEquals(1, cola.numeroAmigosReservados(p4));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDnumeroAmigosReservadosNull() {
+		@SuppressWarnings("unused")
+		int res = cola.numeroAmigosReservados(null);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDnumeroAmigosReservadosNoReservador() {
+		@SuppressWarnings("unused")
+		int res = cola.numeroAmigosReservados(p2);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDnumeroAmigosReservadosNoEstaEnCola() {
+		@SuppressWarnings("unused")
+		int res = cola.numeroAmigosReservados(p3);
 	}
 
 }
