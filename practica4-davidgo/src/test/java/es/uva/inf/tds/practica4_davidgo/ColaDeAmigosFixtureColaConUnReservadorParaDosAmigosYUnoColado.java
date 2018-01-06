@@ -60,10 +60,20 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColado {
 	@Test
 	public void testTDDesReservadorFalse() {
 		assertFalse(cola.esReservador(p2));
+		fail("Obligado a fallar");
+		//TODO repasar una vez implementada la clase ColaDeAmigos
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testTDDesReservadorNull() {
+		@SuppressWarnings("unused")
 		boolean res = cola.esReservador(null);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDesReservadorNoEstaEnCola() {
+		Persona p4 = new Persona("d");
+		@SuppressWarnings("unused")
+		boolean res = cola.esReservador(p4);
 	}
 }

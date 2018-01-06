@@ -82,7 +82,18 @@ public class ColaDeAmigos {
 	}
 
 	
-	public boolean esReservador(Persona p1) {
+	/**
+	 * Devuelve si personaEsperando es uno de los que ha pedido vez o no
+	 * 
+	 * @param personaEsperando, Persona que se encuentra en la cola y de la que se quiere saber si ha pedido vez o no
+	 * @return true en caso de que haya pedido vez. False en caso contrario
+	 * 
+	 * @pre.condition {@code personaEsperando != null}
+	 * @pre.condition {@code estaEnCola(personaEsperando)}
+	 * @throws IllegalArgumentException si {@code personaEsperando == null}
+	 * @throws IllegalStateException si {@code !estaEnCola(personaEsperando)}
+	 */
+	public boolean esReservador(Persona personaEsperando) {
 		// TODO Auto-generated method stub
 		return false;
 	}
