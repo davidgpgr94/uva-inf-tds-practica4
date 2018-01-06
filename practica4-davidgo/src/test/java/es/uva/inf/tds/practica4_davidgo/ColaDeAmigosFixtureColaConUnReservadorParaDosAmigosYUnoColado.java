@@ -39,4 +39,15 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColado {
 		cola.siguiente();
 	}
 
+	@Test
+	public void testTDDhaySiguienteTrue() {
+		assertTrue(cola.haySiguiente());
+	}
+	
+	@Test
+	public void testTDDhaySiguienteFalse() {
+		cola = new ColaDeAmigos();
+		assertFalse(cola.haySiguiente());
+	}
+	
 }
