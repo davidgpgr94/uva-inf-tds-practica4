@@ -40,6 +40,8 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaUnAmigoYNingunoColado {
 		assertFalse(cola.puedeColarse(p5));
 		cola.colarA(p2);
 		assertFalse(cola.puedeColarse(p3));
+		fail("Obligado a fallar");
+		//TODO repasar una vez implementada la clase ColaDeAmigos
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
