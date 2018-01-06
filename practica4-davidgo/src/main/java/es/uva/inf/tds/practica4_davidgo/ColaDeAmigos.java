@@ -129,6 +129,21 @@ public class ColaDeAmigos {
 		return false;
 	}
 
+	/**
+	 * Devuelve el número de amigos a los cuales reservador puede todavía colar delante suya.
+	 * 
+	 * @param reservador, Persona de la que se quiere saber el número de amigos que aún puede colar
+	 * 
+	 * @pre.condition {@code reservador != null}
+	 * @pre.condition {@code estaEncola(reservador)}
+	 * @pre.condition {@code esReservador(reservador)}
+	 * @post.condition {@code nColados >= 0 && nColados <= numeroDeAmigosReservados(reservador)}
+	 * @throws IllegalArgumentException si {@code reservador == null}
+	 * @throws IllegalStateException si {@code !estaEnCola(reservador)}
+	 * @throws IllegalStateException si {@code !esReservador(reservador)}
+	 * 
+	 * @return nColados, el número de amigos que todavía puede colar
+	 */
 	public int cuantosPuedeColar(Persona p1) {
 		// TODO Auto-generated method stub
 		return 0;
