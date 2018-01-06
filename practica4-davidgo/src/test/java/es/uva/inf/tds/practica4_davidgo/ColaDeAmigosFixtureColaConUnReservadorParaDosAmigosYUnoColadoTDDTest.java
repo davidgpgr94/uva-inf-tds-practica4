@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author davidgo
  *
  */
-public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColado {
+public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColadoTDDTest {
 	
 	private Persona p1, p2, p3;
 	private ColaDeAmigos cola;
