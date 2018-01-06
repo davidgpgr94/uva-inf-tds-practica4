@@ -128,4 +128,9 @@ public class ColaDeAmigos {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public int cuantosPuedeColar(Persona p1) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
