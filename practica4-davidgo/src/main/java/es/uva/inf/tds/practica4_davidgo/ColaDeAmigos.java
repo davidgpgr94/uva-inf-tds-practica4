@@ -111,7 +111,20 @@ public class ColaDeAmigos {
 		return false;
 	}
 
-	public boolean puedeColarse(Persona p2) {
+	/**
+	 * Devuelve si persona puede colarse delante de alguien que le considera
+	 * amigo, o no. Una Persona puede colarse si hay alguien en la cola que ha
+	 * reservado para algún amigo y dicha persona aún no haya colado tantos
+	 * amigos como reservó cuando pidió vez.
+	 * 
+	 * @param persona, Persona de la que se quiere saber si puede o no colarse
+	 * 
+	 * @pre.condition {@code persona != null}
+	 * @throws IllegalArgumentException si {@code persona == null}
+	 * 
+	 * @return true si puede colarse, false en caso contrario
+	 */
+	public boolean puedeColarse(Persona persona) {
 		// TODO Auto-generated method stub
 		return false;
 	}
