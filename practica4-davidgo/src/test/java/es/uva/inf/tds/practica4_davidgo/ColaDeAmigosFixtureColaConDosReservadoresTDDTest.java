@@ -58,4 +58,40 @@ public class ColaDeAmigosFixtureColaConDosReservadoresTDDTest {
 		int res = cola.numeroAmigosReservados(p3);
 	}
 
+
+	@Test
+	public void testTDDcoladosPor() {
+		Persona[] expP1 = {p2};
+		Persona[] expP4 = {p5};
+		assertArrayEquals(expP1, cola.coladosPor(p1));
+		assertArrayEquals(expP4, cola.coladosPor(p4));
+	}
+	
+	@Test
+	public void testTDDcoladosPorTrasSerAtendido() {
+		Persona[] expP1 = {};
+		Persona[] expP4 = {p5};
+		cola.atender();
+		assertArrayEquals(expP1, cola.coladosPor(p1));
+		assertArrayEquals(expP4, cola.coladosPor(p4));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDcoladosPorNull() {
+		@SuppressWarnings("unused")
+		Persona[] res = cola.coladosPor(null);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDcoladosPorNoReservador() {
+		@SuppressWarnings("unused")
+		Persona[] res = cola.coladosPor(p5);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDcoladosPorNoEstaEnCola() {
+		@SuppressWarnings("unused")
+		Persona[] res = cola.coladosPor(p3);
+	}
+	
 }
