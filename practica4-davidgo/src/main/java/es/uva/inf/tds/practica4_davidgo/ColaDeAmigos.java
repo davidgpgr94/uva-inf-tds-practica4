@@ -148,4 +148,9 @@ public class ColaDeAmigos {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	public int numeroAmigosReservados(Persona p1) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
