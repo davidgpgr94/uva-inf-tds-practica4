@@ -69,7 +69,6 @@ public class ColaDeAmigos {
 		// TODO Auto-generated method stub
 		
 	}
-
 	
 	/**
 	 * Devuelve si queda alguna Persona o no en la cola para ser atendido.
@@ -81,7 +80,6 @@ public class ColaDeAmigos {
 		return false;
 	}
 
-	
 	/**
 	 * Devuelve si personaEsperando es uno de los que ha pedido vez o no
 	 * 
@@ -94,6 +92,12 @@ public class ColaDeAmigos {
 	 * @throws IllegalStateException si {@code !estaEnCola(personaEsperando)}
 	 */
 	public boolean esReservador(Persona personaEsperando) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+	public boolean estaEnCola(Persona p1) {
 		// TODO Auto-generated method stub
 		return false;
 	}
