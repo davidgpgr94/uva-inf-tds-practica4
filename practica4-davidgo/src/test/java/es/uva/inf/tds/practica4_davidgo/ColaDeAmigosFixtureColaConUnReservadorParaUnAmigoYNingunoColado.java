@@ -30,8 +30,21 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaUnAmigoYNingunoColado {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testTDDpuedeColarseTrue() {
+		assertTrue(cola.puedeColarse(p2));
+	}
+	
+	@Test
+	public void testTDDpuedeColarseFalse() {
+		assertFalse(cola.puedeColarse(p4));
+		assertFalse(cola.puedeColarse(p5));
+		cola.colarA(p2);
+		assertFalse(cola.puedeColarse(p3));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDpuedeColarseNull() {
+		boolean res = cola.puedeColarse(null);
 	}
 
 }
