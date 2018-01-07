@@ -173,6 +173,11 @@ public class Persona {
 		
 	}
 
+	/**
+	 * Devuelve si this y obj representan a la misma persona o no.
+	 * Si obj es instancia de Persona, tiene el mismo nombre, conocidos y amigos, entonces representa
+	 * la misma persona que this. En caso contrario, false.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		// TODO Auto-generated method stub
