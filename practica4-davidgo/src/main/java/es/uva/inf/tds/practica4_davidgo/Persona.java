@@ -1,7 +1,7 @@
 package es.uva.inf.tds.practica4_davidgo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 
 /**
  * 
@@ -10,8 +10,8 @@ import java.util.HashSet;
  */
 public class Persona {
 
-	protected HashSet<Persona> amigos;
-	protected HashSet<Persona> conocidos;
+	protected ArrayList<Persona> amigos;
+	protected ArrayList<Persona> conocidos;
 	protected String nombre;
 	
 	/**
@@ -35,8 +35,8 @@ public class Persona {
 		if (nombre.equals("")) {
 			throw new IllegalArgumentException("Nombre vacio");
 		}
-		amigos = new HashSet<>();
-		conocidos = new HashSet<>();
+		amigos = new ArrayList<>();
+		conocidos = new ArrayList<>();
 		this.nombre = nombre;
 	}
 
@@ -79,11 +79,11 @@ public class Persona {
 				throw new IllegalArgumentException("Algún conocido es null");
 			}
 		}
-		amigos = new HashSet<>();
-		this.conocidos = new HashSet<>();
+		amigos = new ArrayList<>();
+		this.conocidos = new ArrayList<>();
 		this.nombre = nombre;
-		for (Persona p : conocidos) {
-			this.conocidos.add(p);
+		for (int i = 0; i < conocidos.length; i++) {
+			this.conocidos.add(conocidos[i]);
 		}
 	}
 
