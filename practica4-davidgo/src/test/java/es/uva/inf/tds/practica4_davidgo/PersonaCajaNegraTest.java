@@ -3,12 +3,14 @@ package es.uva.inf.tds.practica4_davidgo;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * 
  * @author davidgo
  *
  */
+@Category({Unit.class, Integration.class})
 public class PersonaCajaNegraTest {
 
 	@Test

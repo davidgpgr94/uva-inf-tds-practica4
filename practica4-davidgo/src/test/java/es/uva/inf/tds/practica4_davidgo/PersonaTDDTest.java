@@ -3,12 +3,14 @@ package es.uva.inf.tds.practica4_davidgo;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * 
  * @author davidgo
  *
  */
+@Category({Unit.class, TDD.class, Integration.class})
 public class PersonaTDDTest {
 
 	@Test
@@ -26,6 +28,26 @@ public class PersonaTDDTest {
 		Persona p = new Persona("Pepe", conocidos);
 		assertArrayEquals(conocidos, p.getConocidos());
 		assertEquals("Pepe", p.getNombre());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDConstructorConConocidosNombreNulo() {
+		Persona[] conocidos = {new Persona("Eva"), new Persona("Manu")};
+		@SuppressWarnings("unused")
+		Persona p = new Persona(null, conocidos);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDConstructorConConocidosNombreVacio() {
+		Persona[] conocidos = {new Persona("Eva"), new Persona("Manu")};
+		@SuppressWarnings("unused")
+		Persona p = new Persona("", conocidos);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDConstructorConConocidosConocidosNull() {
+		@SuppressWarnings("unused")
+		Persona p = new Persona("Pepe", null);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -153,8 +175,6 @@ public class PersonaTDDTest {
 		pNotEqualsP3.serAmigoDe(p1);
 		
 		assertFalse(p3.equals(pNotEqualsP3));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase Persona
 	}
 	
 	@Test
@@ -170,8 +190,6 @@ public class PersonaTDDTest {
 		pNotEqualsP3.serAmigoDe(p1);
 		
 		assertFalse(p3.equals(pNotEqualsP3));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase Persona
 	}
 	
 	@Test
@@ -185,8 +203,6 @@ public class PersonaTDDTest {
 		Persona pNotEqualsP3 = new Persona("c", conocidos);
 		
 		assertFalse(p3.equals(pNotEqualsP3));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase Persona
 	}
 	
 	@Test
@@ -200,7 +216,5 @@ public class PersonaTDDTest {
 		String auxTest = "string para test";
 		
 		assertFalse(p3.equals(auxTest));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase Persona
 	}
 }

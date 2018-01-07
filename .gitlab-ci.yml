@@ -1,8 +1,5 @@
 image: maven:3.5.0-jdk-8-alpine
 
-before_script:
-  - cd practica4-davidgo
-
 variables:
   MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
   JACOCO_AGENT:   "target/coverage/jacoco.exec"
@@ -20,16 +17,22 @@ cache:
 
 build_job:
   stage: build
+  before_script:
+    - cd practica4-davidgo
   script:
     - mvn --batch-mode compile -Dmaven.test.skip=true -Djacoco.skip=true
 
 test_unit:
  stage: test
+ before_script:
+   - cd practica4-davidgo
  script:
    - mvn test -P Unit
 
 test_isolation:
  stage: test
+ before_script:
+   - cd practica4-davidgo
  script:
    - mvn test -P Isolation
  except:
@@ -37,6 +40,8 @@ test_isolation:
   
 test_integration:
  stage: test
+ before_script:
+   - cd practica4-davidgo
  script: 
    - mvn test -P Integration
  only:
@@ -45,6 +50,7 @@ test_integration:
 sonar_publish_job:
   stage: qa
   before_script:
+    - cd practica4-davidgo
     - mvn -Djacoco.destFile=$JACOCO_AGENT clean org.jacoco:jacoco-maven-plugin:0.7.8:prepare-agent install
     - mvn -X -Djacoco.dataFile=$JACOCO_AGENT -Djacoco.outputDirectory=./jacoco_ut org.jacoco:jacoco-maven-plugin:report
   script:
@@ -57,6 +63,7 @@ sonar_publish_job:
 sonar_preview_job:
   stage: qa
   before_script:
+    - cd practica4-davidgo
     - mvn -Djacoco.destFile=$JACOCO_AGENT clean org.jacoco:jacoco-maven-plugin:0.7.8:prepare-agent install
     - mvn -X -Djacoco.dataFile=$JACOCO_AGENT -Djacoco.outputDirectory=./jacoco_ut org.jacoco:jacoco-maven-plugin:report
   script:
@@ -68,6 +75,8 @@ sonar_preview_job:
 
 pages:
   stage: deploy
+  before_script:
+    - cd practica4-davidgo
   script:
     - mvn install site
     - mkdir .public
@@ -82,6 +91,8 @@ pages:
 
 deploy:
   stage: deploy
+  before_script:
+    - cd practica4-davidgo
   script:
     - mvn -$MAVEN_CLI_OPTS deploy
   only:
