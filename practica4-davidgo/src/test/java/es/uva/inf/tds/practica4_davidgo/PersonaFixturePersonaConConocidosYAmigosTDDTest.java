@@ -4,12 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * 
  * @author davidgo
  *
  */
+@Category({Unit.class, TDD.class, Integration.class})
 public class PersonaFixturePersonaConConocidosYAmigosTDDTest {
 
 	private Persona p1, p2, p3;
