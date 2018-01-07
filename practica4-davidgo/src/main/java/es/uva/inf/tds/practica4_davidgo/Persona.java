@@ -1,5 +1,8 @@
 package es.uva.inf.tds.practica4_davidgo;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 /**
  * 
  * @author davidgo
@@ -7,6 +10,10 @@ package es.uva.inf.tds.practica4_davidgo;
  */
 public class Persona {
 
+	protected HashSet<Persona> amigos;
+	protected HashSet<Persona> conocidos;
+	protected String nombre;
+	
 	/**
 	 * Crea un objeto persona dado un nombre
 	 * 
@@ -22,7 +29,15 @@ public class Persona {
 	 *             si {@code nombre == null || nombre == ""}
 	 */
 	public Persona(String nombre) {
-		// TODO Auto-generated constructor stub
+		if (nombre == null) {
+			throw new IllegalArgumentException("Nombre null");
+		}
+		if (nombre.equals("")) {
+			throw new IllegalArgumentException("Nombre vacio");
+		}
+		amigos = new HashSet<>();
+		conocidos = new HashSet<>();
+		this.nombre = nombre;
 	}
 
 	/**
@@ -46,23 +61,43 @@ public class Persona {
 	 * @throws IllegalArgumentException
 	 *             cuando no se cumple alguna de las precondiciones
 	 */
-	public Persona(String string, Persona[] conocidos) {
-		// TODO Auto-generated constructor stub
+	public Persona(String nombre, Persona[] conocidos) {
+		if (nombre == null) {
+			throw new IllegalArgumentException("Nombre null");
+		}
+		if (nombre.equals("")) {
+			throw new IllegalArgumentException("Nombre vacio");
+		}
+		if (conocidos == null) {
+			throw new IllegalArgumentException("Conocidos null");
+		}
+		if (conocidos.length <= 0) {
+			throw new IllegalArgumentException("Conocidos vacio");
+		}
+		for (int i = 0; i < conocidos.length; i++) {
+			if (conocidos[i] == null) {
+				throw new IllegalArgumentException("Algún conocido es null");
+			}
+		}
+		amigos = new HashSet<>();
+		this.conocidos = new HashSet<>();
+		this.nombre = nombre;
+		for (Persona p : conocidos) {
+			this.conocidos.add(p);
+		}
 	}
 
 	public Persona[] getAmigos() {
-		// TODO Auto-generated method stub
-		return null;
+		return amigos.toArray(new Persona[0]);
 	}
 
 	public Persona[] getConocidos() {
-		// TODO Auto-generated method stub
-		return null;
+		return conocidos.toArray(new Persona[0]);
 	}
 
 	public String getNombre() {
-		// TODO Auto-generated method stub
-		return null;
+		String aux = new String(nombre);
+		return aux;
 	}
 
 	/**
@@ -86,12 +121,23 @@ public class Persona {
 	 *             si {@code esAmigo(conocido)}
 	 */
 	public void serAmigoDe(Persona conocido) {
-		// TODO Auto-generated method stub
-
+		if (conocido == null) {
+			throw new IllegalArgumentException("Conocido null");
+		}
+		if (conocido.equals(this)) {
+			throw new IllegalArgumentException("Conocido no puede ser this");
+		}
+		if (!esConocido(conocido)) {
+			throw new IllegalStateException("Previamente ha de ser conocido para poder ser amigo");
+		}
+		if (esAmigo(conocido)) {
+			throw new IllegalStateException("Conocido ya es amigo de this.");
+		}
+		amigos.add(conocido);
 	}
 
 	/**
-	 * Devuelve si otro es un conocido de this o no Se considera conocido
+	 * Devuelve si otro es un conocido de this o no. Se considera conocido
 	 * aquellos en la lista de conocidos, y a los de la lista de amigos
 	 * 
 	 * @param otro
@@ -104,8 +150,13 @@ public class Persona {
 	 * @return true si otro es un conocido de this. False en caso contrario
 	 */
 	public boolean esConocido(Persona otro) {
-		// TODO Auto-generated method stub
-		return false;
+		if (otro == null) {
+			throw new IllegalArgumentException("Otro es null");
+		}
+		if (otro.equals(this)) {
+			throw new IllegalArgumentException("Otro no puede ser this");
+		}
+		return conocidos.contains(otro);
 	}
 
 	/**
@@ -122,8 +173,13 @@ public class Persona {
 	 * @return true si otro es un amigo de this. False en caso contrario
 	 */
 	public boolean esAmigo(Persona otro) {
-		// TODO Auto-generated method stub
-		return false;
+		if (otro == null) {
+			throw new IllegalArgumentException("Otro es null");
+		}
+		if (otro.equals(this)) {
+			throw new IllegalArgumentException("Otro no puede ser this");
+		}
+		return amigos.contains(otro);
 	}
 
 	/**
@@ -151,8 +207,21 @@ public class Persona {
 	 *             hasta nuevoConocido.length-1
 	 */
 	public void conocerA(Persona[] nuevoConocido) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < nuevoConocido.length; i++) {
+			if (nuevoConocido[i] == null) {
+				throw new IllegalArgumentException("Algun nuevo conocido es null");
+			}
+			if (nuevoConocido[i].equals(this)) {
+				throw new IllegalArgumentException("Algún nuevo conocido es this");
+			}
+			if (esConocido(nuevoConocido[i])) {
+				throw new IllegalStateException("Algún nuevo conocido ya es conocido");
+			}
+		}
 
+		for (int i = 0; i < nuevoConocido.length; i++) {
+			conocidos.add(nuevoConocido[i]);
+		}
 	}
 
 	
@@ -169,8 +238,16 @@ public class Persona {
 	 * @throws IllegalStateException si {@code !esAmigo(exAmigo)}
 	 */
 	public void dejarSerAmigoDe(Persona exAmigo) {
-		// TODO Auto-generated method stub
-		
+		if (exAmigo == null) {
+			throw new IllegalArgumentException("Examigo null");
+		}
+		if (exAmigo.equals(this)) {
+			throw new IllegalArgumentException("Examigo no puede ser this");
+		}
+		if (!esAmigo(exAmigo)) {
+			throw new IllegalStateException("Examigo ha de ser previamente amigo");
+		}
+		amigos.remove(exAmigo);
 	}
 
 	/**
@@ -179,8 +256,18 @@ public class Persona {
 	 * la misma persona que this. En caso contrario, false.
 	 */
 	@Override
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
+	public boolean equals(Object otro) {
+		if (this == otro) {
+			return true;
+		}
+		if (otro instanceof Persona) {
+			Persona tmpOtro = (Persona)otro;
+			if (!this.nombre.equals(tmpOtro.getNombre())) {
+				return false;
+			} else if (Arrays.equals(this.getConocidos(), tmpOtro.getConocidos())) {
+				return Arrays.equals(this.getAmigos(), tmpOtro.getAmigos());
+			}
+		}
+		return false;
 	}
 }
