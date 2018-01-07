@@ -29,6 +29,26 @@ public class PersonaTDDTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
+	public void testTDDConstructorConConocidosNombreNulo() {
+		Persona[] conocidos = {new Persona("Eva"), new Persona("Manu")};
+		@SuppressWarnings("unused")
+		Persona p = new Persona(null, conocidos);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDConstructorConConocidosNombreVacio() {
+		Persona[] conocidos = {new Persona("Eva"), new Persona("Manu")};
+		@SuppressWarnings("unused")
+		Persona p = new Persona("", conocidos);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDConstructorConConocidosConocidosNull() {
+		@SuppressWarnings("unused")
+		Persona p = new Persona("Pepe", null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
 	public void testTDDConstructorConNombreNulo() {
 		@SuppressWarnings("unused")
 		Persona p = new Persona(null);
