@@ -33,8 +33,6 @@ public class PersonaFixturePersonaConConocidosTDDTest {
 	public void testTDDEsConocidoFalse() {
 		Persona p4 = new Persona("d");
 		assertFalse(p1.esConocido(p4));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase Persona
 	}
 
 	@Test(expected = IllegalArgumentException.class)

@@ -153,8 +153,6 @@ public class PersonaTDDTest {
 		pNotEqualsP3.serAmigoDe(p1);
 		
 		assertFalse(p3.equals(pNotEqualsP3));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase Persona
 	}
 	
 	@Test
@@ -170,8 +168,6 @@ public class PersonaTDDTest {
 		pNotEqualsP3.serAmigoDe(p1);
 		
 		assertFalse(p3.equals(pNotEqualsP3));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase Persona
 	}
 	
 	@Test
@@ -185,8 +181,6 @@ public class PersonaTDDTest {
 		Persona pNotEqualsP3 = new Persona("c", conocidos);
 		
 		assertFalse(p3.equals(pNotEqualsP3));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase Persona
 	}
 	
 	@Test
@@ -200,7 +194,5 @@ public class PersonaTDDTest {
 		String auxTest = "string para test";
 		
 		assertFalse(p3.equals(auxTest));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase Persona
 	}
 }
