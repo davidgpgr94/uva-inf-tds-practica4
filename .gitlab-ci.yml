@@ -83,10 +83,10 @@ pages:
     - cp -R target/site/* .public
     - rm -rf .public/xref
     - rm -rf .public/xref-test
-    - mv .public public
+    - mv .public ../public
   artifacts:
     paths:
-      - practica4-davidgo/public
+      - public
     expire_in: 30 days
 
 deploy:
