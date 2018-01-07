@@ -126,4 +126,81 @@ public class PersonaTDDTest {
 		Persona[] nConocidos = {p2, null};
 		p1.conocerA(nConocidos);
 	}
+
+	@Test
+	public void testTDDequals() {
+		Persona p1 = new Persona("a");
+		Persona p2 = new Persona("b");
+		Persona[] conocidos = {p1, p2};
+		Persona p3 = new Persona("c", conocidos);
+		p3.serAmigoDe(p1);
+		
+		Persona pEqualsP3 = new Persona("c", conocidos);
+		pEqualsP3.serAmigoDe(p1);
+		
+		assertTrue(p3.equals(pEqualsP3));
+	}
+	
+	@Test
+	public void testTDDequalsFalseDistintoNombre() {
+		Persona p1 = new Persona("a");
+		Persona p2 = new Persona("b");
+		Persona[] conocidos = {p1, p2};
+		Persona p3 = new Persona("c", conocidos);
+		p3.serAmigoDe(p1);
+		
+		Persona pNotEqualsP3 = new Persona("d", conocidos);
+		pNotEqualsP3.serAmigoDe(p1);
+		
+		assertFalse(p3.equals(pNotEqualsP3));
+		fail("Obligado a fallar");
+		//TODO repasar una vez implementada la clase Persona
+	}
+	
+	@Test
+	public void testTDDequalsFalseDistintosConocidos() {
+		Persona p1 = new Persona("a");
+		Persona p2 = new Persona("b");
+		Persona[] conocidos = {p1, p2};
+		Persona p3 = new Persona("c", conocidos);
+		p3.serAmigoDe(p1);
+		
+		Persona[] conocidos2 = {p1};
+		Persona pNotEqualsP3 = new Persona("c", conocidos2);
+		pNotEqualsP3.serAmigoDe(p1);
+		
+		assertFalse(p3.equals(pNotEqualsP3));
+		fail("Obligado a fallar");
+		//TODO repasar una vez implementada la clase Persona
+	}
+	
+	@Test
+	public void testTDDequalsFalseDistintosAmigos() {
+		Persona p1 = new Persona("a");
+		Persona p2 = new Persona("b");
+		Persona[] conocidos = {p1, p2};
+		Persona p3 = new Persona("c", conocidos);
+		p3.serAmigoDe(p1);
+		
+		Persona pNotEqualsP3 = new Persona("c", conocidos);
+		
+		assertFalse(p3.equals(pNotEqualsP3));
+		fail("Obligado a fallar");
+		//TODO repasar una vez implementada la clase Persona
+	}
+	
+	@Test
+	public void testTDDequalsFalseNoEsUnaPersona() {
+		Persona p1 = new Persona("a");
+		Persona p2 = new Persona("b");
+		Persona[] conocidos = {p1, p2};
+		Persona p3 = new Persona("c", conocidos);
+		p3.serAmigoDe(p1);
+		
+		String auxTest = "string para test";
+		
+		assertFalse(p3.equals(auxTest));
+		fail("Obligado a fallar");
+		//TODO repasar una vez implementada la clase Persona
+	}
 }
