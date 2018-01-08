@@ -69,7 +69,7 @@ public class ColaDeAmigosFixtureColaConDosReservadoresTDDTest {
 	
 	@Test
 	public void testTDDcoladosPorTrasSerAtendido() {
-		Persona[] expP1 = {};
+		Persona[] expP1 = {p2};
 		Persona[] expP4 = {p5};
 		cola.atender();
 		assertArrayEquals(expP1, cola.coladosPor(p1));
