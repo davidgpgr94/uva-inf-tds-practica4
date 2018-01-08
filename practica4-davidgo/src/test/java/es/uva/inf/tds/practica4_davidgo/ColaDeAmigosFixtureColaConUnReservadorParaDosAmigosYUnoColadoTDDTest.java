@@ -60,6 +60,7 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColadoTDDTes
 	@Test
 	public void testTDDesReservadorFalse() {
 		assertFalse(cola.esReservador(p2));
+		assertFalse(cola.esReservador(p3));
 		fail("Obligado a fallar");
 		//TODO repasar una vez implementada la clase ColaDeAmigos
 	}
@@ -70,12 +71,6 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColadoTDDTes
 		boolean res = cola.esReservador(null);
 	}
 	
-	@Test(expected = IllegalStateException.class)
-	public void testTDDesReservadorNoEstaEnCola() {
-		@SuppressWarnings("unused")
-		boolean res = cola.esReservador(p3);
-	}
-
 	@Test
 	public void testTDDestaEnColaTrue() {
 		assertTrue(cola.estaEnCola(p1));
