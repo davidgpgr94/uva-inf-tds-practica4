@@ -1,7 +1,7 @@
 package es.uva.inf.tds.practica4_davidgo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -12,7 +12,8 @@ import java.util.HashMap;
 public class ColaDeAmigos {
 
 	protected ArrayList<Persona> cola;
-	protected HashMap<Persona, Integer> reservadores;
+	protected HashMap<Persona, Integer> reservadores; //relaciona reservador con numero de amigos para los que ha reservado
+	protected HashMap<Persona, ArrayList<Persona>> coladosPor; //relaciona reservador con los amigos que ha colado
 	
 	/**
 	 * Crea un objeto ColaDeAmigos que representa una cola en la que se debe
@@ -22,6 +23,7 @@ public class ColaDeAmigos {
 	public ColaDeAmigos() {
 		cola = new ArrayList<>();
 		reservadores = new HashMap<>();
+		coladosPor = new HashMap<>();
 	}
 
 	/**
@@ -59,6 +61,7 @@ public class ColaDeAmigos {
 		}
 		reservadores.put(reservador, nAmigos);
 		cola.add(reservador);
+		coladosPor.put(reservador, new ArrayList<>());
 	}
 
 	/**
@@ -93,21 +96,20 @@ public class ColaDeAmigos {
 		if (colado == null) {
 			throw new IllegalArgumentException("Colado null");
 		}
-		if (esReservador(colado)) {
-			throw new IllegalStateException("Colado es un reservador");
-		}
 		if (!puedeColarse(colado)) {
 			throw new IllegalStateException("Colado no puede colarse");
 		}
-		
+				
 		int posReservador = cola.size()-1; //en la ultima posicion de la cola siempre habra un reservador
+		
 		for (Persona reservador : reservadores.keySet()) {
-			if (reservador.esAmigo(colado)) {
+			if (reservador.esAmigo(colado) && cuantosPuedeColar(reservador) > 0) {
 				if (cola.indexOf(reservador) <= posReservador) {
 					posReservador = cola.indexOf(reservador);
 				}
 			}
 		}
+		coladosPor.get(cola.get(posReservador)).add(colado); //metemos a colado en la lista de coladosPor el reservador correspondiente
 		cola.add(posReservador, colado);
 	}
 	
@@ -132,9 +134,6 @@ public class ColaDeAmigos {
 	public boolean esReservador(Persona personaEsperando) {
 		if (personaEsperando == null) {
 			throw new IllegalArgumentException("personaEsperando null");
-		}
-		if (!estaEnCola(personaEsperando)) {
-			throw new IllegalStateException("personaEsperando no está en la cola");
 		}
 		return reservadores.containsKey(personaEsperando);
 	}
@@ -181,7 +180,7 @@ public class ColaDeAmigos {
 			return false;
 		} else {
 			for (Persona reservador : reservadores.keySet()) {
-				if (Arrays.asList(reservador.getAmigos()).contains(persona) && cuantosPuedeColar(reservador) > 0) {
+				if (reservador.esAmigo(persona) && cuantosPuedeColar(reservador) > 0) {
 					return true;
 				}
 			}
@@ -214,16 +213,7 @@ public class ColaDeAmigos {
 		if (!esReservador(reservador)) {
 			throw new IllegalStateException("Reservador no es un reservador");
 		}
-		
-		int colados = 0;
-		for (int i = cola.indexOf(reservador)-1; i >= 0; i--) {
-			if (esReservador(cola.get(i))) {
-				colados = cola.indexOf(reservador) - i - 1;
-				return reservadores.get(reservador) - colados;
-			}
-		}
-		colados = cola.indexOf(reservador);
-		return reservadores.get(reservador) - colados;
+		return reservadores.get(reservador) - coladosPor.get(reservador).size();
 	}
 
 	/**
@@ -266,6 +256,7 @@ public class ColaDeAmigos {
 		if (!haySiguiente()) {
 			throw new IllegalStateException("No hay siguiente a quien atender");
 		}
+		coladosPor.remove(cola.get(0));
 		reservadores.remove(cola.get(0));
 		cola.remove(0);
 	}
@@ -298,12 +289,10 @@ public class ColaDeAmigos {
 			throw new IllegalStateException("Reservador no es un reservador");
 		}
 		
-		int numColados = reservadores.get(reservador) - cuantosPuedeColar(reservador);
-		Persona[] colados = new Persona[numColados];
-		for (int i = cola.indexOf(reservador)-1; numColados >= 0; numColados--) {
-			colados[numColados-1] = cola.get(i);
-			i--;
-		}
-		return colados;
+		
+		ArrayList<Persona> colados = new ArrayList<>();
+		colados.addAll(coladosPor.get(reservador));
+		Collections.reverse(colados);
+		return colados.toArray(new Persona[0]);
 	}
 }
