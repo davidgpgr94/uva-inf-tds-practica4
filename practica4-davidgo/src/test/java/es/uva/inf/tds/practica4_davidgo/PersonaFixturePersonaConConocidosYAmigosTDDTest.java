@@ -4,12 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * 
  * @author davidgo
  *
  */
+@Category({Unit.class, TDD.class, Integration.class})
 public class PersonaFixturePersonaConConocidosYAmigosTDDTest {
 
 	private Persona p1, p2, p3;
@@ -40,16 +42,12 @@ public class PersonaFixturePersonaConConocidosYAmigosTDDTest {
 	@Test
 	public void testTDDEsAmigoFalse() {
 		assertFalse(p1.esAmigo(p3));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase Persona
 	}
 	
 	@Test
 	public void testTDDEsAmigoFalseNiConocido() {
 		Persona p4 = new Persona("d");
 		assertFalse(p1.esAmigo(p4));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase Persona
 	}
 	
 	@Test(expected = IllegalArgumentException.class)

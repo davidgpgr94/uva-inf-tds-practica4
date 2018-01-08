@@ -23,6 +23,8 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColadoTDDTes
 		p3 = new Persona("c");
 		Persona[] conocidos = {p2, p3};
 		p1 = new Persona("a", conocidos);
+		p1.serAmigoDe(p2);
+		p1.serAmigoDe(p3);
 		cola = new ColaDeAmigos();
 		cola.pedirVez(p1, 2);
 		cola.colarA(p2);
@@ -48,8 +50,6 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColadoTDDTes
 	public void testTDDhaySiguienteFalse() {
 		cola = new ColaDeAmigos();
 		assertFalse(cola.haySiguiente());
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase ColaDeAmigos
 	}
 
 	@Test
@@ -60,8 +60,7 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColadoTDDTes
 	@Test
 	public void testTDDesReservadorFalse() {
 		assertFalse(cola.esReservador(p2));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase ColaDeAmigos
+		assertFalse(cola.esReservador(p3));
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -70,12 +69,6 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColadoTDDTes
 		boolean res = cola.esReservador(null);
 	}
 	
-	@Test(expected = IllegalStateException.class)
-	public void testTDDesReservadorNoEstaEnCola() {
-		@SuppressWarnings("unused")
-		boolean res = cola.esReservador(p3);
-	}
-
 	@Test
 	public void testTDDestaEnColaTrue() {
 		assertTrue(cola.estaEnCola(p1));
@@ -85,8 +78,6 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaDosAmigosYUnoColadoTDDTes
 	@Test
 	public void testTDDestaEnColaFalse() {
 		assertFalse(cola.estaEnCola(p3));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase ColaDeAmigos
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
