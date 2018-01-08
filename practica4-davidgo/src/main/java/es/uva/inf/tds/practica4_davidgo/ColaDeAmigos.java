@@ -82,12 +82,11 @@ public class ColaDeAmigos {
 	 * @param colado, Persona que va a ser colada
 	 * 
 	 * @pre.condition {@code colado != null}
-	 * @pre.condition {@code !esReservador(colado)}
 	 * @pre.condition {@code puedeColarse(colado)}
 	 * @post.condition {@code estaEnCola(colado)}
+	 * @post.condition {@code !puedeColarse(colado)}
 	 * @post.condition {@code cuantosPuedeColar(reservador_de_colado) == @pre.cuantosPuedeColar(reservador_de_colado)-1}
 	 * @throws IllegalArgumentException si {@code colado == null}
-	 * @throws IllegalStateException si {@code esReservador(colado)}
 	 * @throws IllegalStateException si {@code !puedeColarse(colado)} 
 	 */
 	public void colarA(Persona colado) {
@@ -128,9 +127,7 @@ public class ColaDeAmigos {
 	 * @return true en caso de que haya pedido vez. False en caso contrario
 	 * 
 	 * @pre.condition {@code personaEsperando != null}
-	 * @pre.condition {@code estaEnCola(personaEsperando)}
 	 * @throws IllegalArgumentException si {@code personaEsperando == null}
-	 * @throws IllegalStateException si {@code !estaEnCola(personaEsperando)}
 	 */
 	public boolean esReservador(Persona personaEsperando) {
 		if (personaEsperando == null) {
@@ -161,9 +158,10 @@ public class ColaDeAmigos {
 
 	/**
 	 * Devuelve si persona puede colarse delante de alguien que le considera
-	 * amigo, o no. Una Persona puede colarse si hay alguien en la cola que ha
-	 * reservado para algún amigo y dicha persona aún no haya colado tantos
-	 * amigos como reservó cuando pidió vez.
+	 * amigo, o no. Una Persona puede colarse si no esta en la cola y
+	 * hay alguien en la cola que ha reservado para algún amigo y dicha persona
+	 * aún no haya colado tantos amigos como reservó cuando pidió vez.
+	 * 
 	 * 
 	 * @param persona, Persona de la que se quiere saber si puede o no colarse
 	 * 

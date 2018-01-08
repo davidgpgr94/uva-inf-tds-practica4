@@ -36,6 +36,7 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaUnAmigoYNingunoColadoTDDT
 	
 	@Test
 	public void testTDDpuedeColarseFalse() {
+		assertFalse(cola.puedeColarse(p1));
 		assertFalse(cola.puedeColarse(p4));
 		assertFalse(cola.puedeColarse(p5));
 		cola.colarA(p2);
