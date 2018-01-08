@@ -15,8 +15,6 @@ public class ColaDeAmigosTDDTest {
 	public void testTDDConstructorColaDeAmigos() {
 		ColaDeAmigos c = new ColaDeAmigos();
 		assertNotNull(c);
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase ColaDeAmigos
 	}
 	
 	@Test
@@ -125,8 +123,6 @@ public class ColaDeAmigosTDDTest {
 		cola.pedirVez(p1, 0);
 		cola.atender();
 		assertFalse(cola.estaEnCola(p1));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase ColaDeAmigos
 	}
 	
 	@Test(expected = IllegalStateException.class)
