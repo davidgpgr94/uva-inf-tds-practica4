@@ -176,8 +176,6 @@ public class ColaDeAmigos {
 		
 		if (estaEnCola(persona)) {
 			return false;
-		} else if(esReservador(persona)) {
-			return false;
 		} else {
 			for (Persona reservador : reservadores.keySet()) {
 				if (reservador.esAmigo(persona) && cuantosPuedeColar(reservador) > 0) {
