@@ -1,5 +1,9 @@
 package es.uva.inf.tds.practica4_davidgo;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+
 /**
  * 
  * @author davidgo
@@ -7,13 +11,19 @@ package es.uva.inf.tds.practica4_davidgo;
  */
 public class ColaDeAmigos {
 
+	protected ArrayList<Persona> cola;
+	protected HashMap<Persona, Integer> reservadores; //relaciona reservador con numero de amigos para los que ha reservado
+	protected HashMap<Persona, ArrayList<Persona>> coladosPor; //relaciona reservador con los amigos que ha colado
+	
 	/**
 	 * Crea un objeto ColaDeAmigos que representa una cola en la que se debe
 	 * pedir la vez para entrar y en la que se puede reservar sitio para un
 	 * grupo de amigos.
 	 */
 	public ColaDeAmigos() {
-		// TODO Auto-generated constructor stub
+		cola = new ArrayList<>();
+		reservadores = new HashMap<>();
+		coladosPor = new HashMap<>();
 	}
 
 	/**
@@ -34,8 +44,24 @@ public class ColaDeAmigos {
 	 * @throws IllegalStateException si {@code estaEnCola(reservador)}
 	 */
 	public void pedirVez(Persona reservador, int nAmigos) {
-		// TODO Auto-generated method stub
-		
+		if(reservador == null) {
+			throw new IllegalArgumentException("Reservador null");
+		}
+		if (nAmigos < 0) {
+			throw new IllegalArgumentException("nAmigos negativo");
+		}
+		if (nAmigos > 10) {
+			throw new IllegalArgumentException("nAmigos superior al limite de 10");
+		}
+		if (esReservador(reservador)) {
+			throw new IllegalStateException("Reservador ya ha reservado previamente");
+		}
+		if (estaEnCola(reservador)) {
+			throw new IllegalStateException("Reservador ya está en la cola");
+		}
+		reservadores.put(reservador, nAmigos);
+		cola.add(reservador);
+		coladosPor.put(reservador, new ArrayList<>());
 	}
 
 	/**
@@ -47,8 +73,10 @@ public class ColaDeAmigos {
 	 * @throws IllegalStateException si {@code !haySiguiente()}
 	 */
 	public Persona siguiente() {
-		// TODO Auto-generated method stub
-		return null;
+		if (!haySiguiente()) {
+			throw new IllegalStateException("No hay siguiente");
+		}
+		return cola.get(0);
 	}
 
 	/**
@@ -57,17 +85,32 @@ public class ColaDeAmigos {
 	 * @param colado, Persona que va a ser colada
 	 * 
 	 * @pre.condition {@code colado != null}
-	 * @pre.condition {@code !esReservador(colado)}
 	 * @pre.condition {@code puedeColarse(colado)}
 	 * @post.condition {@code estaEnCola(colado)}
+	 * @post.condition {@code !puedeColarse(colado)}
 	 * @post.condition {@code cuantosPuedeColar(reservador_de_colado) == @pre.cuantosPuedeColar(reservador_de_colado)-1}
 	 * @throws IllegalArgumentException si {@code colado == null}
-	 * @throws IllegalStateException si {@code esReservador(colado)}
 	 * @throws IllegalStateException si {@code !puedeColarse(colado)} 
 	 */
 	public void colarA(Persona colado) {
-		// TODO Auto-generated method stub
+		if (colado == null) {
+			throw new IllegalArgumentException("Colado null");
+		}
+		if (!puedeColarse(colado)) {
+			throw new IllegalStateException("Colado no puede colarse");
+		}
+				
+		int posReservador = cola.size()-1; //en la ultima posicion de la cola siempre habra un reservador
 		
+		for (Persona reservador : reservadores.keySet()) {
+			if (reservador.esAmigo(colado) && cuantosPuedeColar(reservador) > 0) {
+				if (cola.indexOf(reservador) <= posReservador) {
+					posReservador = cola.indexOf(reservador);
+				}
+			}
+		}
+		coladosPor.get(cola.get(posReservador)).add(colado); //metemos a colado en la lista de coladosPor el reservador correspondiente
+		cola.add(posReservador, colado);
 	}
 	
 	/**
@@ -76,8 +119,7 @@ public class ColaDeAmigos {
 	 * @return true si queda al menos uno en la cola. False en caso contrario
 	 */
 	public boolean haySiguiente() {
-		// TODO Auto-generated method stub
-		return false;
+		return !cola.isEmpty();
 	}
 
 	/**
@@ -87,13 +129,13 @@ public class ColaDeAmigos {
 	 * @return true en caso de que haya pedido vez. False en caso contrario
 	 * 
 	 * @pre.condition {@code personaEsperando != null}
-	 * @pre.condition {@code estaEnCola(personaEsperando)}
 	 * @throws IllegalArgumentException si {@code personaEsperando == null}
-	 * @throws IllegalStateException si {@code !estaEnCola(personaEsperando)}
 	 */
 	public boolean esReservador(Persona personaEsperando) {
-		// TODO Auto-generated method stub
-		return false;
+		if (personaEsperando == null) {
+			throw new IllegalArgumentException("personaEsperando null");
+		}
+		return reservadores.containsKey(personaEsperando);
 	}
 
 	
@@ -107,15 +149,18 @@ public class ColaDeAmigos {
 	 * @throws IllegalArgumentException si {@code persona == null}
 	 */
 	public boolean estaEnCola(Persona persona) {
-		// TODO Auto-generated method stub
-		return false;
+		if (persona == null) {
+			throw new IllegalArgumentException("Persona null");
+		}
+		return cola.contains(persona);
 	}
 
 	/**
 	 * Devuelve si persona puede colarse delante de alguien que le considera
-	 * amigo, o no. Una Persona puede colarse si hay alguien en la cola que ha
-	 * reservado para algún amigo y dicha persona aún no haya colado tantos
-	 * amigos como reservó cuando pidió vez.
+	 * amigo, o no. Una Persona puede colarse si no esta en la cola y
+	 * hay alguien en la cola que ha reservado para algún amigo y dicha persona
+	 * aún no haya colado tantos amigos como reservó cuando pidió vez.
+	 * 
 	 * 
 	 * @param persona, Persona de la que se quiere saber si puede o no colarse
 	 * 
@@ -125,8 +170,20 @@ public class ColaDeAmigos {
 	 * @return true si puede colarse, false en caso contrario
 	 */
 	public boolean puedeColarse(Persona persona) {
-		// TODO Auto-generated method stub
-		return false;
+		if (persona == null) {
+			throw new IllegalArgumentException("Persona null");
+		}
+		
+		if (estaEnCola(persona)) {
+			return false;
+		} else {
+			for (Persona reservador : reservadores.keySet()) {
+				if (reservador.esAmigo(persona) && cuantosPuedeColar(reservador) > 0) {
+					return true;
+				}
+			}
+			return false;
+		}
 	}
 
 	/**
@@ -144,9 +201,17 @@ public class ColaDeAmigos {
 	 * 
 	 * @return nColados, el número de amigos que todavía puede colar
 	 */
-	public int cuantosPuedeColar(Persona p1) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int cuantosPuedeColar(Persona reservador) {
+		if (reservador == null) {
+			throw new IllegalArgumentException("Reservador null");
+		}
+		if (!estaEnCola(reservador)) {
+			throw new IllegalStateException("Reservador no está en la cola");
+		}
+		if (!esReservador(reservador)) {
+			throw new IllegalStateException("Reservador no es un reservador");
+		}
+		return reservadores.get(reservador) - coladosPor.get(reservador).size();
 	}
 
 	/**
@@ -165,8 +230,17 @@ public class ColaDeAmigos {
 	 * @return nAmigos, número de amigos para los que pidió vez
 	 */
 	public int numeroAmigosReservados(Persona reservador) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (reservador == null) {
+			throw new IllegalArgumentException("Reservador null");
+		}
+		if (!estaEnCola(reservador)) {
+			throw new IllegalStateException("Reservador no está en cola");
+		}
+		if (!esReservador(reservador)) {
+			throw new IllegalStateException("Reservador no es un reservador");
+		}
+		
+		return reservadores.get(reservador);
 	}
 
 	/**
@@ -177,8 +251,12 @@ public class ColaDeAmigos {
 	 * @throws IllegalStateException si {@code !haySiguiente()}
 	 */
 	public void atender() {
-		// TODO Auto-generated method stub
-		
+		if (!haySiguiente()) {
+			throw new IllegalStateException("No hay siguiente a quien atender");
+		}
+		coladosPor.remove(cola.get(0));
+		reservadores.remove(cola.get(0));
+		cola.remove(0);
 	}
 
 	/**
@@ -199,7 +277,20 @@ public class ColaDeAmigos {
 	 *         devuelve un array vacio
 	 */
 	public Persona[] coladosPor(Persona reservador) {
-		// TODO Auto-generated method stub
-		return null;
+		if (reservador == null) {
+			throw new IllegalArgumentException("Reservador null");
+		}
+		if (!estaEnCola(reservador)) {
+			throw new IllegalStateException("Reservador no esta en cola");
+		}
+		if (!esReservador(reservador)) {
+			throw new IllegalStateException("Reservador no es un reservador");
+		}
+		
+		
+		ArrayList<Persona> colados = new ArrayList<>();
+		colados.addAll(coladosPor.get(reservador));
+		Collections.reverse(colados);
+		return colados.toArray(new Persona[0]);
 	}
 }

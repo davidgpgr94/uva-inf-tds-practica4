@@ -4,7 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+/**
+ * 
+ * @author davidgo
+ *
+ */
+@Category({TDD.class, Integration.class})
 public class ColaDeAmigosFixtureColaConUnReservadorParaUnAmigoYNingunoColadoTDDTest {
 
 	private Persona p1, p2, p3, p4, p5;
@@ -36,12 +43,11 @@ public class ColaDeAmigosFixtureColaConUnReservadorParaUnAmigoYNingunoColadoTDDT
 	
 	@Test
 	public void testTDDpuedeColarseFalse() {
+		assertFalse(cola.puedeColarse(p1));
 		assertFalse(cola.puedeColarse(p4));
 		assertFalse(cola.puedeColarse(p5));
 		cola.colarA(p2);
 		assertFalse(cola.puedeColarse(p3));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase ColaDeAmigos
 	}
 	
 	@Test(expected = IllegalArgumentException.class)

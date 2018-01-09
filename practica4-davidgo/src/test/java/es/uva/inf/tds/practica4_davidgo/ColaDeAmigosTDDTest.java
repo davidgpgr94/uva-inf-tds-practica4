@@ -3,20 +3,20 @@ package es.uva.inf.tds.practica4_davidgo;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * 
  * @author davidgo
  *
  */
+@Category({TDD.class, Integration.class})
 public class ColaDeAmigosTDDTest {
 
 	@Test
 	public void testTDDConstructorColaDeAmigos() {
 		ColaDeAmigos c = new ColaDeAmigos();
 		assertNotNull(c);
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase ColaDeAmigos
 	}
 	
 	@Test
@@ -125,8 +125,6 @@ public class ColaDeAmigosTDDTest {
 		cola.pedirVez(p1, 0);
 		cola.atender();
 		assertFalse(cola.estaEnCola(p1));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementada la clase ColaDeAmigos
 	}
 	
 	@Test(expected = IllegalStateException.class)
