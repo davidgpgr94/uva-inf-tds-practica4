@@ -4,7 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+/**
+ * 
+ * @author davidgo
+ *
+ */
+@Category({TDD.class, Integration.class})
 public class ColaDeAmigosFixtureColaConDosReservadoresTDDTest {
 
 	private Persona p1, p2, p3, p4, p5;
