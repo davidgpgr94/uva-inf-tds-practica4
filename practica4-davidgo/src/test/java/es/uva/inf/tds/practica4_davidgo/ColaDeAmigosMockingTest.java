@@ -24,7 +24,7 @@ public class ColaDeAmigosMockingTest {
 	@Before
 	public void setUp() throws Exception {
 		p1 = createMock(Persona.class);
-		expect(p1.getNombre()).andReturn("a").anyTimes();
+		expect(p1.getDni()).andReturn("a").anyTimes();
 	}
 	
 	@After

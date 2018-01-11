@@ -19,7 +19,7 @@ public class PersonaCajaNegraTest {
 		Persona[] exp = {};
 		assertArrayEquals(exp, p.getAmigos());
 		assertArrayEquals(exp, p.getConocidos());
-		assertEquals("a", p.getNombre());
+		assertEquals("a", p.getDni());
 	}
 	
 	@Test
@@ -29,7 +29,7 @@ public class PersonaCajaNegraTest {
 		Persona[] expAmigos = {};
 		assertArrayEquals(expAmigos, p.getAmigos());
 		assertArrayEquals(conocidos, p.getConocidos());
-		assertEquals("b", p.getNombre());
+		assertEquals("b", p.getDni());
 	}
 
 	@Test(expected = IllegalArgumentException.class)

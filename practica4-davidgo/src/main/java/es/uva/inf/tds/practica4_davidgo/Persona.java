@@ -12,21 +12,21 @@ public class Persona {
 
 	protected ArrayList<Persona> amigos;
 	protected ArrayList<Persona> conocidos;
-	protected String nombre;
+	protected String dni;
 	
 	/**
-	 * Crea un objeto persona dado un nombre
+	 * Crea un objeto persona dado un dni
 	 * 
-	 * @param nombre,
-	 *            nombre de la persona
+	 * @param dni,
+	 *            dni de la persona
 	 * 
-	 * @pre.condition {@code nombre != null}
-	 * @pre.condition {@code nombre != ""}
-	 * @post.condition {@code nombre == this.getNombre()}
+	 * @pre.condition {@code dni != null}
+	 * @pre.condition {@code dni != ""}
+	 * @post.condition {@code dni == this.getNombre()}
 	 * @post.condition {@code null == this.getConocidos()}
 	 * @post.condition {@code null == this.getAmigos()}
 	 * @throws IllegalArgumentException
-	 *             si {@code nombre == null || nombre == ""}
+	 *             si {@code dni == null || dni == ""}
 	 */
 	public Persona(String nombre) {
 		if (nombre == null) {
@@ -37,25 +37,25 @@ public class Persona {
 		}
 		amigos = new ArrayList<>();
 		conocidos = new ArrayList<>();
-		this.nombre = nombre;
+		this.dni = nombre;
 	}
 
 	/**
-	 * Crea un objeto persona dado un nombre y un array de Persona que
+	 * Crea un objeto persona dado un dni y un array de Persona que
 	 * representa sus conocidos
 	 * 
-	 * @param nombre,
-	 *            nombre de la persona
+	 * @param dni,
+	 *            dni de la persona
 	 * @param conocidos,
 	 *            array de Persona que representa los conocidos de this
 	 * 
-	 * @pre.condition {@code nombre != null}
-	 * @pre.condition {@code nombre != ""}
+	 * @pre.condition {@code dni != null}
+	 * @pre.condition {@code dni != ""}
 	 * @pre.condition {@code conocidos != null}
 	 * @pre.condition {@code conocidos.length > 0}
 	 * @pre.condition {@code conocidos[i] != null} para todo i desde 0 hasta
 	 *                conocidos.length-1
-	 * @post.condition {@code nombre == this.getNombre()}
+	 * @post.condition {@code dni == this.getNombre()}
 	 * @post.condition {@code Arrays.equals(conocidos, this.getConocidos())}
 	 * @post.condition {@code null == this.getAmigos()}
 	 * @throws IllegalArgumentException
@@ -81,7 +81,7 @@ public class Persona {
 		}
 		amigos = new ArrayList<>();
 		this.conocidos = new ArrayList<>();
-		this.nombre = nombre;
+		this.dni = nombre;
 		for (int i = 0; i < conocidos.length; i++) {
 			this.conocidos.add(conocidos[i]);
 		}
@@ -95,8 +95,8 @@ public class Persona {
 		return conocidos.toArray(new Persona[0]);
 	}
 
-	public String getNombre() {
-		String aux = new String(nombre);
+	public String getDni() {
+		String aux = new String(dni);
 		return aux;
 	}
 
@@ -252,7 +252,7 @@ public class Persona {
 
 	/**
 	 * Devuelve si this y obj representan a la misma persona o no.
-	 * Si obj es instancia de Persona, tiene el mismo nombre, conocidos y amigos, entonces representa
+	 * Si obj es instancia de Persona, tiene el mismo dni, conocidos y amigos, entonces representa
 	 * la misma persona que this. En caso contrario, false.
 	 */
 	@Override
@@ -262,7 +262,7 @@ public class Persona {
 		}
 		if (otro instanceof Persona) {
 			Persona tmpOtro = (Persona)otro;
-			if (!this.nombre.equals(tmpOtro.getNombre())) {
+			if (!this.dni.equals(tmpOtro.getDni())) {
 				return false;
 			} else if (Arrays.equals(this.getConocidos(), tmpOtro.getConocidos())) {
 				return Arrays.equals(this.getAmigos(), tmpOtro.getAmigos());
