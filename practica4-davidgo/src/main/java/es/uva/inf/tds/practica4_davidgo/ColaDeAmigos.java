@@ -106,10 +106,8 @@ public class ColaDeAmigos {
 		int posReservador = cola.size()-1; //en la ultima posicion de la cola siempre habra un reservador
 		
 		for (Persona reservador : reservadores.keySet()) {
-			if (reservador.esAmigo(colado) && cuantosPuedeColar(reservador) > 0) {
-				if (cola.indexOf(reservador) <= posReservador) {
+			if (reservador.esAmigo(colado) && cuantosPuedeColar(reservador) > 0 && cola.indexOf(reservador) <= posReservador) {
 					posReservador = cola.indexOf(reservador);
-				}
 			}
 		}
 		coladosPor.get(cola.get(posReservador)).add(colado); //metemos a colado en la lista de coladosPor el reservador correspondiente
