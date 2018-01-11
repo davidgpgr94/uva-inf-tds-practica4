@@ -12,6 +12,7 @@ import java.util.HashMap;
 public class ColaDeAmigos {
 
 	private static final String MSGRNOR = "Reservador no es un reservador";
+	private static final String MSGRNULL = "Reservador null";
 	
 	protected ArrayList<Persona> cola;
 	protected HashMap<Persona, Integer> reservadores; //relaciona reservador con numero de amigos para los que ha reservado
@@ -47,7 +48,7 @@ public class ColaDeAmigos {
 	 */
 	public void pedirVez(Persona reservador, int nAmigos) {
 		if(reservador == null) {
-			throw new IllegalArgumentException("Reservador null");
+			throw new IllegalArgumentException(MSGRNULL);
 		}
 		if (nAmigos < 0) {
 			throw new IllegalArgumentException("nAmigos negativo");
@@ -205,7 +206,7 @@ public class ColaDeAmigos {
 	 */
 	public int cuantosPuedeColar(Persona reservador) {
 		if (reservador == null) {
-			throw new IllegalArgumentException("Reservador null");
+			throw new IllegalArgumentException(MSGRNULL);
 		}
 		if (!estaEnCola(reservador)) {
 			throw new IllegalStateException("Reservador no está en la cola");
@@ -233,7 +234,7 @@ public class ColaDeAmigos {
 	 */
 	public int numeroAmigosReservados(Persona reservador) {
 		if (reservador == null) {
-			throw new IllegalArgumentException("Reservador null");
+			throw new IllegalArgumentException(MSGRNULL);
 		}
 		if (!estaEnCola(reservador)) {
 			throw new IllegalStateException("Reservador no está en cola");
@@ -280,7 +281,7 @@ public class ColaDeAmigos {
 	 */
 	public Persona[] coladosPor(Persona reservador) {
 		if (reservador == null) {
-			throw new IllegalArgumentException("Reservador null");
+			throw new IllegalArgumentException(MSGRNULL);
 		}
 		if (!estaEnCola(reservador)) {
 			throw new IllegalStateException("Reservador no esta en cola");
