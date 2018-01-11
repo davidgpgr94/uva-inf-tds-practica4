@@ -272,9 +272,6 @@ public class Persona {
 	
 	@Override
 	public int hashCode() {
-		int hash = dni.hashCode();
-		hash = 31 * hash + conocidos.size();
-		hash = hash + amigos.size();
-		return hash;
+		return dni.hashCode();
 	}
 }
