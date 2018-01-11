@@ -1,4 +1,4 @@
-package es.uva.inf.tds.practica4_davidgo;
+package es.uva.inf.tds.practica4.davidgo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,60 +12,60 @@ public class Persona {
 
 	protected ArrayList<Persona> amigos;
 	protected ArrayList<Persona> conocidos;
-	protected String nombre;
+	protected String dni;
 	
 	/**
-	 * Crea un objeto persona dado un nombre
+	 * Crea un objeto persona dado un dni
 	 * 
-	 * @param nombre,
-	 *            nombre de la persona
+	 * @param dni,
+	 *            dni de la persona
 	 * 
-	 * @pre.condition {@code nombre != null}
-	 * @pre.condition {@code nombre != ""}
-	 * @post.condition {@code nombre == this.getNombre()}
+	 * @pre.condition {@code dni != null}
+	 * @pre.condition {@code dni != ""}
+	 * @post.condition {@code dni == this.getNombre()}
 	 * @post.condition {@code null == this.getConocidos()}
 	 * @post.condition {@code null == this.getAmigos()}
 	 * @throws IllegalArgumentException
-	 *             si {@code nombre == null || nombre == ""}
+	 *             si {@code dni == null || dni == ""}
 	 */
-	public Persona(String nombre) {
-		if (nombre == null) {
+	public Persona(String dni) {
+		if (dni == null) {
 			throw new IllegalArgumentException("Nombre null");
 		}
-		if (nombre.equals("")) {
+		if ("".equals(dni)) {
 			throw new IllegalArgumentException("Nombre vacio");
 		}
 		amigos = new ArrayList<>();
 		conocidos = new ArrayList<>();
-		this.nombre = nombre;
+		this.dni = dni;
 	}
 
 	/**
-	 * Crea un objeto persona dado un nombre y un array de Persona que
+	 * Crea un objeto persona dado un dni y un array de Persona que
 	 * representa sus conocidos
 	 * 
-	 * @param nombre,
-	 *            nombre de la persona
+	 * @param dni,
+	 *            dni de la persona
 	 * @param conocidos,
 	 *            array de Persona que representa los conocidos de this
 	 * 
-	 * @pre.condition {@code nombre != null}
-	 * @pre.condition {@code nombre != ""}
+	 * @pre.condition {@code dni != null}
+	 * @pre.condition {@code dni != ""}
 	 * @pre.condition {@code conocidos != null}
 	 * @pre.condition {@code conocidos.length > 0}
 	 * @pre.condition {@code conocidos[i] != null} para todo i desde 0 hasta
 	 *                conocidos.length-1
-	 * @post.condition {@code nombre == this.getNombre()}
+	 * @post.condition {@code dni == this.getNombre()}
 	 * @post.condition {@code Arrays.equals(conocidos, this.getConocidos())}
 	 * @post.condition {@code null == this.getAmigos()}
 	 * @throws IllegalArgumentException
 	 *             cuando no se cumple alguna de las precondiciones
 	 */
-	public Persona(String nombre, Persona[] conocidos) {
-		if (nombre == null) {
+	public Persona(String dni, Persona[] conocidos) {
+		if (dni == null) {
 			throw new IllegalArgumentException("Nombre null");
 		}
-		if (nombre.equals("")) {
+		if ("".equals(dni)) {
 			throw new IllegalArgumentException("Nombre vacio");
 		}
 		if (conocidos == null) {
@@ -81,7 +81,7 @@ public class Persona {
 		}
 		amigos = new ArrayList<>();
 		this.conocidos = new ArrayList<>();
-		this.nombre = nombre;
+		this.dni = dni;
 		for (int i = 0; i < conocidos.length; i++) {
 			this.conocidos.add(conocidos[i]);
 		}
@@ -95,9 +95,8 @@ public class Persona {
 		return conocidos.toArray(new Persona[0]);
 	}
 
-	public String getNombre() {
-		String aux = new String(nombre);
-		return aux;
+	public String getDni() {
+		return dni;
 	}
 
 	/**
@@ -185,42 +184,42 @@ public class Persona {
 	/**
 	 * Añade a la lista de conocidos a una Persona
 	 *
-	 * @param nuevoConocido,
+	 * @param nuevosConocidos,
 	 *            array de Persona que son los nuevos conocidos de this
 	 * 
-	 * @pre.condition {@code nuevoConocido[i] != null} para todo i desde 0 hasta
-	 *                nuevoConocido.length-1
-	 * @pre.condition {@code nuevoConocido[i] != this} para todo i desde 0 hasta
-	 *                nuevoConocido.length-1
-	 * @pre.condition {@code !esConocido(nuevoConocido[i])} para todo i desde 0
-	 *                hasta nuevoConocido.length-1
-	 * @post.condition {@code esConocido(nuevoConocido[i])} para todo i desde 0
-	 *                 hasta nuevoConocido.length-1
+	 * @pre.condition {@code nuevosConocidos[i] != null} para todo i desde 0 hasta
+	 *                nuevosConocidos.length-1
+	 * @pre.condition {@code nuevosConocidos[i] != this} para todo i desde 0 hasta
+	 *                nuevosConocidos.length-1
+	 * @pre.condition {@code !esConocido(nuevosConocidos[i])} para todo i desde 0
+	 *                hasta nuevosConocidos.length-1
+	 * @post.condition {@code esConocido(nuevosConocidos[i])} para todo i desde 0
+	 *                 hasta nuevosConocidos.length-1
 	 * @throws IllegalArgumentException
-	 *             si {@code nuevoConocido[i] == null} para algún i desde 0
-	 *             hasta nuevoConocido.length-1
+	 *             si {@code nuevosConocidos[i] == null} para algún i desde 0
+	 *             hasta nuevosConocidos.length-1
 	 * @throws IllegalArgumentException
-	 *             si {@code nuevoConocido[i] == this} para algún i desde 0
-	 *             hasta nuevoConocido.length-1
+	 *             si {@code nuevosConocidos[i] == this} para algún i desde 0
+	 *             hasta nuevosConocidos.length-1
 	 * @throws IllegalStateException
-	 *             si {@code esConocido(nuevoConocido[i])} para algún i desde 0
-	 *             hasta nuevoConocido.length-1
+	 *             si {@code esConocido(nuevosConocidos[i])} para algún i desde 0
+	 *             hasta nuevosConocidos.length-1
 	 */
-	public void conocerA(Persona[] nuevoConocido) {
-		for (int i = 0; i < nuevoConocido.length; i++) {
-			if (nuevoConocido[i] == null) {
+	public void conocerA(Persona[] nuevosConocidos) {
+		for (int i = 0; i < nuevosConocidos.length; i++) {
+			if (nuevosConocidos[i] == null) {
 				throw new IllegalArgumentException("Algun nuevo conocido es null");
 			}
-			if (nuevoConocido[i].equals(this)) {
+			if (nuevosConocidos[i].equals(this)) {
 				throw new IllegalArgumentException("Algún nuevo conocido es this");
 			}
-			if (esConocido(nuevoConocido[i])) {
+			if (esConocido(nuevosConocidos[i])) {
 				throw new IllegalStateException("Algún nuevo conocido ya es conocido");
 			}
 		}
 
-		for (int i = 0; i < nuevoConocido.length; i++) {
-			conocidos.add(nuevoConocido[i]);
+		for (int i = 0; i < nuevosConocidos.length; i++) {
+			conocidos.add(nuevosConocidos[i]);
 		}
 	}
 
@@ -252,7 +251,7 @@ public class Persona {
 
 	/**
 	 * Devuelve si this y obj representan a la misma persona o no.
-	 * Si obj es instancia de Persona, tiene el mismo nombre, conocidos y amigos, entonces representa
+	 * Si obj es instancia de Persona, tiene el mismo dni, conocidos y amigos, entonces representa
 	 * la misma persona que this. En caso contrario, false.
 	 */
 	@Override
@@ -262,12 +261,17 @@ public class Persona {
 		}
 		if (otro instanceof Persona) {
 			Persona tmpOtro = (Persona)otro;
-			if (!this.nombre.equals(tmpOtro.getNombre())) {
+			if (!this.dni.equals(tmpOtro.getDni())) {
 				return false;
 			} else if (Arrays.equals(this.getConocidos(), tmpOtro.getConocidos())) {
 				return Arrays.equals(this.getAmigos(), tmpOtro.getAmigos());
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return dni.hashCode();
 	}
 }

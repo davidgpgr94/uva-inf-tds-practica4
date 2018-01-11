@@ -34,7 +34,7 @@
 		<profile>
 			<id>Unit</id>
 			<properties>
-				<testcase.groups>es.uva.inf.tds.practica4_davidgo.Unit</testcase.groups>
+				<testcase.groups>es.uva.inf.tds.practica4.davidgo.Unit</testcase.groups>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -43,7 +43,7 @@
 		<profile>
 			<id>TDD</id>
 			<properties>
-				<testcase.groups>es.uva.inf.tds.practica4_davidgo.TDD</testcase.groups>
+				<testcase.groups>es.uva.inf.tds.practica4.davidgo.TDD</testcase.groups>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -52,19 +52,19 @@
 		<profile>
 			<id>Isolation</id>
 			<properties>
-				<testcase.groups>es.uva.inf.tds.practica4_davidgo.Isolation</testcase.groups>
+				<testcase.groups>es.uva.inf.tds.practica4.davidgo.Isolation</testcase.groups>
 			</properties>
 		</profile>
 		<profile>
 			<id>Integration</id>
 			<properties>
-				<testcase.groups>es.uva.inf.tds.practica4_davidgo.Integration</testcase.groups>
+				<testcase.groups>es.uva.inf.tds.practica4.davidgo.Integration</testcase.groups>
 			</properties>
 		</profile>
 		<profile>
 			<id>Sequences</id>
 			<properties>
-				<testcase.groups>es.uva.inf.tds.practica4_davidgo.Sequences</testcase.groups>
+				<testcase.groups>es.uva.inf.tds.practica4.davidgo.Sequences</testcase.groups>
 			</properties>
 		</profile>
 	</profiles>
