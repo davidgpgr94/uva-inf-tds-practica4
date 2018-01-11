@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;nombre&apos; in &apos;es.uva.inf.tds.practica4_davidgo.Persona&apos; to &apos;dni&apos;&#x0A;- Original project: &apos;practica4-davidgo&apos;&#x0A;- Original element: &apos;es.uva.inf.tds.practica4_davidgo.Persona.nombre&apos;&#x0A;- Renamed element: &apos;es.uva.inf.tds.practica4_davidgo.Persona.dni&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings&#x0A;- Rename getter method for field" delegate="false" deprecate="true" description="Rename field &apos;nombre&apos;" flags="589830" getter="true" id="org.eclipse.jdt.ui.rename.field" input="/src\/main\/java&lt;es.uva.inf.tds.practica4_davidgo{Persona.java[Persona^nombre" name="dni" references="true" setter="false" stamp="1515668902578" textual="true" version="1.0"/>
+</session>
