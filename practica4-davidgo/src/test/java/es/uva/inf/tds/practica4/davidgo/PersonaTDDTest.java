@@ -1,4 +1,4 @@
-package es.uva.inf.tds.practica4_davidgo;
+package es.uva.inf.tds.practica4.davidgo;
 
 import static org.junit.Assert.*;
 
@@ -19,7 +19,7 @@ public class PersonaTDDTest {
 		Persona[] exp = {};
 		assertArrayEquals(exp, p.getAmigos());
 		assertArrayEquals(exp, p.getConocidos());
-		assertEquals("Pepe", p.getNombre());
+		assertEquals("Pepe", p.getDni());
 	}
 
 	@Test
@@ -27,7 +27,7 @@ public class PersonaTDDTest {
 		Persona[] conocidos = {new Persona("Eva"), new Persona("Manu")};
 		Persona p = new Persona("Pepe", conocidos);
 		assertArrayEquals(conocidos, p.getConocidos());
-		assertEquals("Pepe", p.getNombre());
+		assertEquals("Pepe", p.getDni());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
