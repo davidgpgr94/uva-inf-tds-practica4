@@ -1,4 +1,4 @@
-package es.uva.inf.tds.practica4_davidgo;
+package es.uva.inf.tds.practica4.davidgo;
 
 import static org.junit.Assert.*;
 

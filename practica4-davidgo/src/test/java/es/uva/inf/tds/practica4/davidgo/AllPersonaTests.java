@@ -1,4 +1,4 @@
-package es.uva.inf.tds.practica4_davidgo;
+package es.uva.inf.tds.practica4.davidgo;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
