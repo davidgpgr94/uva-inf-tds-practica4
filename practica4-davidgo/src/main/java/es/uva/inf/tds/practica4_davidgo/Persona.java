@@ -28,16 +28,16 @@ public class Persona {
 	 * @throws IllegalArgumentException
 	 *             si {@code dni == null || dni == ""}
 	 */
-	public Persona(String nombre) {
-		if (nombre == null) {
+	public Persona(String dni) {
+		if (dni == null) {
 			throw new IllegalArgumentException("Nombre null");
 		}
-		if (nombre.equals("")) {
+		if ("".equals(dni)) {
 			throw new IllegalArgumentException("Nombre vacio");
 		}
 		amigos = new ArrayList<>();
 		conocidos = new ArrayList<>();
-		this.dni = nombre;
+		this.dni = dni;
 	}
 
 	/**
@@ -61,11 +61,11 @@ public class Persona {
 	 * @throws IllegalArgumentException
 	 *             cuando no se cumple alguna de las precondiciones
 	 */
-	public Persona(String nombre, Persona[] conocidos) {
-		if (nombre == null) {
+	public Persona(String dni, Persona[] conocidos) {
+		if (dni == null) {
 			throw new IllegalArgumentException("Nombre null");
 		}
-		if (nombre.equals("")) {
+		if ("".equals(dni)) {
 			throw new IllegalArgumentException("Nombre vacio");
 		}
 		if (conocidos == null) {
@@ -81,7 +81,7 @@ public class Persona {
 		}
 		amigos = new ArrayList<>();
 		this.conocidos = new ArrayList<>();
-		this.dni = nombre;
+		this.dni = dni;
 		for (int i = 0; i < conocidos.length; i++) {
 			this.conocidos.add(conocidos[i]);
 		}
@@ -96,8 +96,7 @@ public class Persona {
 	}
 
 	public String getDni() {
-		String aux = new String(dni);
-		return aux;
+		return dni;
 	}
 
 	/**
@@ -185,42 +184,42 @@ public class Persona {
 	/**
 	 * Añade a la lista de conocidos a una Persona
 	 *
-	 * @param nuevoConocido,
+	 * @param nuevosConocidos,
 	 *            array de Persona que son los nuevos conocidos de this
 	 * 
-	 * @pre.condition {@code nuevoConocido[i] != null} para todo i desde 0 hasta
-	 *                nuevoConocido.length-1
-	 * @pre.condition {@code nuevoConocido[i] != this} para todo i desde 0 hasta
-	 *                nuevoConocido.length-1
-	 * @pre.condition {@code !esConocido(nuevoConocido[i])} para todo i desde 0
-	 *                hasta nuevoConocido.length-1
-	 * @post.condition {@code esConocido(nuevoConocido[i])} para todo i desde 0
-	 *                 hasta nuevoConocido.length-1
+	 * @pre.condition {@code nuevosConocidos[i] != null} para todo i desde 0 hasta
+	 *                nuevosConocidos.length-1
+	 * @pre.condition {@code nuevosConocidos[i] != this} para todo i desde 0 hasta
+	 *                nuevosConocidos.length-1
+	 * @pre.condition {@code !esConocido(nuevosConocidos[i])} para todo i desde 0
+	 *                hasta nuevosConocidos.length-1
+	 * @post.condition {@code esConocido(nuevosConocidos[i])} para todo i desde 0
+	 *                 hasta nuevosConocidos.length-1
 	 * @throws IllegalArgumentException
-	 *             si {@code nuevoConocido[i] == null} para algún i desde 0
-	 *             hasta nuevoConocido.length-1
+	 *             si {@code nuevosConocidos[i] == null} para algún i desde 0
+	 *             hasta nuevosConocidos.length-1
 	 * @throws IllegalArgumentException
-	 *             si {@code nuevoConocido[i] == this} para algún i desde 0
-	 *             hasta nuevoConocido.length-1
+	 *             si {@code nuevosConocidos[i] == this} para algún i desde 0
+	 *             hasta nuevosConocidos.length-1
 	 * @throws IllegalStateException
-	 *             si {@code esConocido(nuevoConocido[i])} para algún i desde 0
-	 *             hasta nuevoConocido.length-1
+	 *             si {@code esConocido(nuevosConocidos[i])} para algún i desde 0
+	 *             hasta nuevosConocidos.length-1
 	 */
-	public void conocerA(Persona[] nuevoConocido) {
-		for (int i = 0; i < nuevoConocido.length; i++) {
-			if (nuevoConocido[i] == null) {
+	public void conocerA(Persona[] nuevosConocidos) {
+		for (int i = 0; i < nuevosConocidos.length; i++) {
+			if (nuevosConocidos[i] == null) {
 				throw new IllegalArgumentException("Algun nuevo conocido es null");
 			}
-			if (nuevoConocido[i].equals(this)) {
+			if (nuevosConocidos[i].equals(this)) {
 				throw new IllegalArgumentException("Algún nuevo conocido es this");
 			}
-			if (esConocido(nuevoConocido[i])) {
+			if (esConocido(nuevosConocidos[i])) {
 				throw new IllegalStateException("Algún nuevo conocido ya es conocido");
 			}
 		}
 
-		for (int i = 0; i < nuevoConocido.length; i++) {
-			conocidos.add(nuevoConocido[i]);
+		for (int i = 0; i < nuevosConocidos.length; i++) {
+			conocidos.add(nuevosConocidos[i]);
 		}
 	}
 
