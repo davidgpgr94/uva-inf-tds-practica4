@@ -195,12 +195,12 @@ public class ColaDeAmigos {
 	 * @pre.condition {@code reservador != null}
 	 * @pre.condition {@code estaEncola(reservador)}
 	 * @pre.condition {@code esReservador(reservador)}
-	 * @post.condition {@code nColados >= 0 && nColados <= numeroDeAmigosReservados(reservador)}
+	 * @post.condition {@code nPuedeColar >= 0 && nPuedeColar <= numeroDeAmigosReservados(reservador)}
 	 * @throws IllegalArgumentException si {@code reservador == null}
 	 * @throws IllegalStateException si {@code !estaEnCola(reservador)}
 	 * @throws IllegalStateException si {@code !esReservador(reservador)}
 	 * 
-	 * @return nColados, el número de amigos que todavía puede colar
+	 * @return nPuedeColar, el número de amigos que todavía puede colar
 	 */
 	public int cuantosPuedeColar(Persona reservador) {
 		if (reservador == null) {
