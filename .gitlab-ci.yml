@@ -95,7 +95,9 @@ deploy:
   stage: deploy
   before_script:
     - cd practica4-davidgo
+    - mkdir .m2
+    - cp /usr/share/maven/conf/settings.xml .m2/settings.xml
   script:
-    - mvn -$MAVEN_CLI_OPTS deploy
+    - mvn -$MAVEN_CLI_OPTS install
   only:
     - master
